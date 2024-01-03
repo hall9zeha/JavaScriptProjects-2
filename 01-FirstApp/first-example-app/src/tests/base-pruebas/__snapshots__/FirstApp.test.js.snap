@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test in FirstApp should show a subtitle sending by props 1`] = `
+Array [
+  <h1>
+    Hola Mundo
+  </h1>,
+  <h1>
+    Hola developer
+  </h1>,
+  <h2>
+    Soy un subtítulo
+  </h2>,
+  <pre>
+    {"name":"Martha","age":27}
+  </pre>,
+  <p>
+    My first example in java-script after long time
+  </p>,
+]
+`;
+
+exports[`test in FirstApp should show a title sending by props 1`] = `
+Array [
+  <h1>
+    Hola Mundo
+  </h1>,
+  <h1>
+    Hola developer
+  </h1>,
+  <h2>
+    Soy un subtítulo
+  </h2>,
+  <pre>
+    {"name":"Martha","age":27}
+  </pre>,
+  <p>
+    My first example in java-script after long time
+  </p>,
+]
+`;
