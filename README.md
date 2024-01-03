@@ -1,3 +1,3 @@
-# JavaScript_Projects_2
+# JavaScriptProjects 2
 
 Conjunto de proyectos en Java script
