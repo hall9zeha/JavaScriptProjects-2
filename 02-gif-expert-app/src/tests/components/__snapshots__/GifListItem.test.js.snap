@@ -4,7 +4,12 @@ exports[`Tests in GifLisItem should show GifListItem component successful 1`] = 
 <div
   className="card animate__animated animate__bounceInLeft animate__delay-700s"
 >
-  <img />
-  <p />
+  <img
+    alt="Family spy"
+    src="https//fakeurl.test.com/family.gif"
+  />
+  <p>
+    Family spy
+  </p>
 </div>
 `;
