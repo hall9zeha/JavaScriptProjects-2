@@ -11,7 +11,7 @@ export default function AddCategory({setCategories}) {//obtenemos la función en
   const handleOnsubmit = (e)=>{
     e.preventDefault();
     if(inputValue.trim().length > 1){
-    setCategories(cats=>[...cats, inputValue]);
+    setCategories(cats=>[inputValue,...cats]);
     }
     setInputValue('');
   }
