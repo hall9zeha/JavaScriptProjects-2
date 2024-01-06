@@ -6,7 +6,6 @@ import { GifListItem } from './GifListItem';
 export const GifList = ({category}) => {
 
     const {data, loading} = useFetchGifs(category);
-   
 
    return (
    <>

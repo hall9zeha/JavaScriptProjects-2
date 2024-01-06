@@ -1,6 +1,7 @@
 
 import React, { memo, useState } from 'react'
-import AddCategory from './components/AddCategory';
+import { AddCategory } from './components/AddCategory';
+
 import { GifList } from './components/GifList';
 
 

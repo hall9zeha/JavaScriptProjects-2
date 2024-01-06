@@ -1,19 +1,22 @@
-import {React, useState} from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types';
 
-export default function AddCategory({setCategories}) {//obtenemos la función enviada desde El componente GifExpertApp
 
-  const [inputValue, setInputValue] = useState('');//Para que no nos dé un error de undefined al dejar vacío nuestro estado lo ponemos como vacío
-  
-  const handleInputChange =(e) =>{
-    setInputValue(e.target.value);
-  }
+export const AddCategory = ({setCategories}) => {
+  //obtenemos la función enviada desde El componente GifExpertApp
+
+  //Para que no nos de un error de undefined lo ponemos como vacío
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange =(e) =>{setInputValue(e.target.value);}
+
   const handleOnsubmit = (e)=>{
     e.preventDefault();
     if(inputValue.trim().length > 1){
     setCategories(cats=>[inputValue,...cats]);
-    }
     setInputValue('');
+    }
+    
   }
   return (
     // <> 
@@ -30,6 +33,7 @@ export default function AddCategory({setCategories}) {//obtenemos la función en
     
   )
 }
+
 AddCategory.propTypes={
     setCategories:PropTypes.func.isRequired
 }
