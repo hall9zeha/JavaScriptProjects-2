@@ -23,7 +23,7 @@ export const AddCategory = ({setCategories}) => {
     // Si ya tenemos un contenedor de todos nuestros elementos como será el caso de nuestro formulario
     // ya no necesitaremos el fragment
     <form onSubmit={handleOnsubmit}>
-    <input
+     <input
         type='text'
         value={inputValue}
         onChange={handleInputChange}
