@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing in <GifList/> component should show component successful 1`] = `
+Array [
+  <h3 />,
+  <p>
+    Cargando...
+  </p>,
+  <div
+    className="card-grid"
+  />,
+]
+`;
