@@ -6,8 +6,15 @@ import renderer, {act} from 'react-test-renderer';
 
 describe('Tests in <AddCategory/> component', () => { 
 
-    const setCategoryTest= () => {};
-    const wrapper = renderer.create(<AddCategory setCategories={setCategoryTest}/>);
+    const setCategoryTest= jest.fn(); // Para saber si la función fue llamada o de que forma fue utilizada usamos jest.fn()
+                                      //wue simula todas las características de una función
+    let wrapper = renderer.create(<AddCategory setCategories={setCategoryTest}/>);
+
+    //Limpiamos todas las pruebas
+    beforeEach(()=>{
+        jest.clearAllMocks();
+        wrapper = renderer.create(<AddCategory setCategories={setCategoryTest}/>);
+    })
 
     test('should show successfuly', () => { 
         
@@ -25,4 +32,11 @@ describe('Tests in <AddCategory/> component', () => {
         })
         //expect(p.props.children).toBe(value);
     });
+
+    test('should not post anything on the submit',()=>{
+        const form = wrapper.root.findByType('form');
+        act(()=>{
+            form.props.onSubmit({preventDefault(){}})
+        })
+    })
  })
