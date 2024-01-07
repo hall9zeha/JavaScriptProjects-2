@@ -39,4 +39,28 @@ describe('Tests in <AddCategory/> component', () => {
             form.props.onSubmit({preventDefault(){}})
         })
     })
+
+    test('should call setCategory function and clear the text box',()=>{
+
+        //Simulando el input change
+        const input = wrapper.root.findByType('input');
+        const form = wrapper.root.findByType('form');
+        const value = 'Hello world';
+        act(()=>{
+            input.props.onChange({target:{value}})
+        })
+        //Simulando el submit
+        act(()=>{
+            form.props.onSubmit({preventDefault(){}});
+        })
+        //Verificando si setCategory se llama al menos una vez
+        expect(setCategoryTest).toHaveBeenCalled();
+        //Verificando que la función sea llamada solo una vez
+        expect(setCategoryTest).toHaveBeenCalledTimes(1);
+        //Verificando que se haya llamado a una función
+        expect(setCategoryTest).toHaveBeenCalledWith(expect.any( Function ));
+
+        //Verificando que el input esté vacío
+        expect(input.props.value).toBe('');
+    });
  })
