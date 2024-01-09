@@ -13,3 +13,27 @@ Array [
   />,
 ]
 `;
+
+exports[`testing in <GifList/> component shuld show items when are loading with useFetchGifs 1`] = `
+Array [
+  <h3>
+    Scavengers reign
+  </h3>,
+  <div
+    className="card-grid"
+  >
+    <div
+      className="card animate__animated animate__bounceInLeft animate__delay-700s"
+      data-testid="div"
+    >
+      <img
+        alt="Levi"
+        src="https://fkeurl.com/fakeimg.jpg"
+      />
+      <p>
+        Levi
+      </p>
+    </div>
+  </div>,
+]
+`;
