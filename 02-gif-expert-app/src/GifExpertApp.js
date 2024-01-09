@@ -6,9 +6,9 @@ import { GifList } from './components/GifList';
 
 
 
-const GifExpertApp = memo(() => {
+export const GifExpertApp = (({defaultCategories = []}) => {
 
-  const [categories, setCategory] = useState(['One punch']);
+  const [categories, setCategory] = useState(defaultCategories);
 
   
   // const handleAdd = (e)=>{

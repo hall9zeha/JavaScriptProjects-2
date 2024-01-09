@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test in <GifExpertApp/> component should show a category list 1`] = `
+Array [
+  <h2>
+    GifExpertApp
+  </h2>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </form>,
+  <hr />,
+  <ol>
+    <h3>
+      Boku no hero
+    </h3>
+    <p
+      className="loading"
+    >
+      Cargando...
+    </p>
+    <div
+      className="card-grid"
+    />
+    <h3>
+      Komi san
+    </h3>
+    <p
+      className="loading"
+    >
+      Cargando...
+    </p>
+    <div
+      className="card-grid"
+    />
+  </ol>,
+]
+`;
+
+exports[`test in <GifExpertApp/> component should show successful 1`] = `
+Array [
+  <h2>
+    GifExpertApp
+  </h2>,
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </form>,
+  <hr />,
+  <ol />,
+]
+`;

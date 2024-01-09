@@ -38,7 +38,9 @@ describe('testing in <GifList/> component', () => {
         const element = wrapper.root.findAllByProps({className:'loading'});
         //Evaluamos si el párrafo que muestra el loading no existe
         expect(element).toHaveLength(0);
-
+        //Evaluamos que la cantidad de elementos del Grid que contiene los gifs ea igul al arreglo de gifs
+        const gridGifs = wrapper.root.findAllByProps({className:'card-grid'});
+        expect(gridGifs).toHaveLength(gifs.length);
 
      });
  })
