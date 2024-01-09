@@ -2,6 +2,9 @@ import React from 'react';
 import { renderHook, waitFor} from "@testing-library/react";
 import { useFetchGifs } from "../../hooks/useFetchGifs";
 
+//Importante este test requiere la API key en el lugar correspondiente /helpers/getGifs
+//o también puede hacerse un mock de la data 
+
 describe('test in useFetchGifs hook', () => { 
 
     test('should return a initial state',async () => { 
