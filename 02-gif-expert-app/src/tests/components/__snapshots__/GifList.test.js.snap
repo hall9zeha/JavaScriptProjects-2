@@ -5,7 +5,9 @@ Array [
   <h3>
     Scavengers reign
   </h3>,
-  <p>
+  <p
+    className="loading"
+  >
     Cargando...
   </p>,
   <div

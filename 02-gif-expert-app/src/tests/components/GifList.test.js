@@ -19,7 +19,7 @@ describe('testing in <GifList/> component', () => {
         expect(component).toMatchSnapshot();
      })
 
-     test('shuld show items when are loading with useFetchGifs', ()=>{
+     test('shuld show items when are loading with useFetchGifs',()=>{
         const gifs = [{
             id:'A123',
             url:'https://fkeurl.com/fakeimg.jpg',
@@ -34,6 +34,11 @@ describe('testing in <GifList/> component', () => {
         const wrapper = renderer.create(<GifList category={category}/>);
 
         expect(wrapper).toMatchSnapshot();
+
+        const element = wrapper.root.findAllByProps({className:'loading'});
+        //Evaluamos si el párrafo que muestra el loading no existe
+        expect(element).toHaveLength(0);
+
 
      });
  })

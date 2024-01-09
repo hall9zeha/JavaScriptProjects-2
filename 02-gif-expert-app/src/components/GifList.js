@@ -12,7 +12,7 @@ export const GifList = ({category}) => {
    <>
     <h3>{category}</h3>
     {/* El símbolo && permite evaluar si loading es verdador hacer algo caso contrario nada */}
-    {loading && <p>Cargando...</p>} 
+    {loading && <p className="loading">Cargando...</p>} 
     <div className='card-grid'>
         {
             data.map( image =>
