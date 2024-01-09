@@ -9,7 +9,7 @@ export const useFetchGifs = (category) => {
     loading:true
   });
 
-  //Los efectos o pueden ser asíncronos pero perfectamente se puede usar eventos asíncronos dentro de ellos
+  //Los efectos no pueden ser asíncronos pero perfectamente se puede usar eventos asíncronos dentro de ellos
   useEffect(()=>{
     fetchGifs(category).
         then(imgs=>{
