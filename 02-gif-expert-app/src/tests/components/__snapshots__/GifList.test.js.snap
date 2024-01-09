@@ -2,7 +2,9 @@
 
 exports[`testing in <GifList/> component should show component successful 1`] = `
 Array [
-  <h3 />,
+  <h3>
+    Scavengers reign
+  </h3>,
   <p>
     Cargando...
   </p>,
