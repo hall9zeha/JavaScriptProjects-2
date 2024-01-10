@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import './effects.css'
+import { Message } from './Message';
 
 export const SimpleForm = () => {
 
@@ -11,15 +12,15 @@ export const SimpleForm = () => {
     const {name, email} = formState;
 
     useEffect(()=>{
-        console.log('useEffect una sola vez');
+       // console.log('useEffect una sola vez');
     },[])//Se ejecutará solo una vez al renderizar el componente
 
     useEffect(()=>{
-        console.log('Escuchando cambios en formulario');
+        //console.log('Escuchando cambios en formulario');
     },[formState]);//Se ejecutará cuando haya cambios en el formulario
 
     useEffect(()=>{
-        console.log('Escuchando cambios en email');
+       // console.log('Escuchando cambios en email');
     },[email])//Se ejecutará cuando haya cambios en el input email
 
     const handleOnChange =({target})=>{
@@ -57,6 +58,7 @@ export const SimpleForm = () => {
                 onChange={handleOnChange}
                 />
         </div>
+        {(name==='123' && <Message/>)}
     </>
   )
 }
