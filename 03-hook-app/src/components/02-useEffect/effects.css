@@ -7,3 +7,9 @@ body {
 .btn{
     margin-top: 16px ;
 }
+.blockquote-footer{
+    margin-top: 4px;
+}
+.btn {
+    margin: 4px;
+}
