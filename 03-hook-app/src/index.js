@@ -11,12 +11,12 @@ import { LayoutEffect } from './components/05-useLayoutEffect/LayoutEffect';
 import { CallbackHook } from './components/06-memos/CallbackHook';
 import { MemoHook } from './components/06-memos/MemoHook';
 import { Memorize } from './components/06-memos/Memorize';
+import { IntroReducer } from './components/07-useReducer/IntroReducer';
 import { HookApp } from './HookApp';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-     <CallbackHook />
+     <IntroReducer/>
  );
-
