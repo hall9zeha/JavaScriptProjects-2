@@ -1,14 +1,16 @@
-import React, { useReducer } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import { useForm } from '../../hooks/useForm'
 import './reducerStyles.css'
 import { todoReducer } from './todoReducer'
 
 const init=()=>{
-    return [{
-        id:new Date().getTime(),
-        desc:'learning Android multiplatform',
-        done:false
-    }]
+    // return [{
+    //     id:new Date().getTime(),
+    //     desc:'learning Android multiplatform',
+    //     done:false
+    // }]
+    //Usaremos lo que almacenemos en Local storage
+    return JSON.parse(localStorage.getItem('todos')) || []; //si existen retornar, sino un arreglo vacío
 }
 export const TodoApp = () => {
 
@@ -18,6 +20,13 @@ export const TodoApp = () => {
     const [{description}, handleInputChange,resetForm]=useForm({
         description:''
     })
+
+    //useEffect para lanzar la orden de grabar en Local storage
+
+    useEffect(()=>{
+
+        localStorage.setItem('todos', JSON.stringify(todos))
+    },[todos]);//cuando cambie la lista de tareas
 
     const handleSubmit = (e)=>{
         e.preventDefault();
