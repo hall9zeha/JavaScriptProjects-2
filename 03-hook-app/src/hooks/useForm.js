@@ -4,6 +4,9 @@ import { useState } from "react"
 export const useForm = (initValues = {}) => {
     const[values, setValues] = useState(initValues);
 
+    const resetForm = ()=>{
+        setValues(initValues);
+    }
     const handleOnChange =({target})=>{
         setValues({
             ...values,
@@ -11,5 +14,5 @@ export const useForm = (initValues = {}) => {
         })
     }
 
-    return [values, handleOnChange]
+    return [values, handleOnChange, resetForm]
 }

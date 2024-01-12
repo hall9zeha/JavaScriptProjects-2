@@ -12,11 +12,12 @@ import { CallbackHook } from './components/06-memos/CallbackHook';
 import { MemoHook } from './components/06-memos/MemoHook';
 import { Memorize } from './components/06-memos/Memorize';
 import { IntroReducer } from './components/07-useReducer/IntroReducer';
+import { TodoApp } from './components/07-useReducer/TodoApp';
 import { HookApp } from './HookApp';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-     <IntroReducer/>
+     <TodoApp/>
  );
