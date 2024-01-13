@@ -22,11 +22,10 @@ export const TodoApp = () => {
     })
 
     //useEffect para lanzar la orden de grabar en Local storage
-
     useEffect(()=>{
 
         localStorage.setItem('todos', JSON.stringify(todos))
-    },[todos]);//cuando cambie la lista de tareas
+    },[todos]);//cuando cambie la lista de tareas se guardará una nueva versión en LocalStorage
 
     const handleSubmit = (e)=>{
         e.preventDefault();
@@ -47,6 +46,17 @@ export const TodoApp = () => {
         dispatch(actionAdd);
         resetForm();
     }
+    //Para eliminar un registro
+    const handleDelete = (todoId)=>{
+        console.log(todoId);
+        const actionDelete = {
+            type:'delete',
+            payload:todoId
+        }
+        dispatch(actionDelete);
+
+    }
+
   return (
     <div>
         <h1>TodoApp ({todos.length})</h1>
@@ -60,7 +70,9 @@ export const TodoApp = () => {
                             className='list-group-item'
                         >
                             <p className='text-center '>{i+1 }.{todo.desc}</p>
-                            <button className='btn btn-danger'>Borrar</button> 
+                            <button 
+                                onClick={()=>{handleDelete(todo.id)}}
+                                className='btn btn-danger'>Borrar</button> 
                         </li>
                     ))
                 }
