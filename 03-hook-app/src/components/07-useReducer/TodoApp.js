@@ -1,6 +1,8 @@
 import React, { useEffect, useReducer } from 'react'
-import { useForm } from '../../hooks/useForm'
+
 import './reducerStyles.css'
+import { TodoAddForm } from './TodoAddForm'
+import { TodoList } from './TodoList'
 import { todoReducer } from './todoReducer'
 
 const init=()=>{
@@ -17,9 +19,6 @@ export const TodoApp = () => {
     const [todos, dispatch] = useReducer(todoReducer, [],init)
     
 
-    const [{description}, handleInputChange,resetForm]=useForm({
-        description:''
-    })
 
     //useEffect para lanzar la orden de grabar en Local storage
     useEffect(()=>{
@@ -27,25 +26,14 @@ export const TodoApp = () => {
         localStorage.setItem('todos', JSON.stringify(todos))
     },[todos]);//cuando cambie la lista de tareas se guardará una nueva versión en LocalStorage
 
-    const handleSubmit = (e)=>{
-        e.preventDefault();
-        //Si el input box está vacío no hacer nada
-        if(description.trim().length <=1){
-            return;
-        }
-        const newTodo = {
-            id:new Date().getTime(),
-            desc:description,
-            done:false
-        };
-
-        const actionAdd ={
+    const handleTodoAdd = (newTodo)=>{
+        dispatch({
             type:'add',
             payload:newTodo
-        };
-        dispatch(actionAdd);
-        resetForm();
+            }
+        )
     }
+
     //Para eliminar un registro
     const handleDelete = (todoId)=>{
         console.log(todoId);
@@ -70,39 +58,14 @@ export const TodoApp = () => {
         <hr/>
         <div className='row'>
             <div className='col-7'>
-                <ul className='list-group list-group-flush'>
-                {
-                    todos.map((todo, i)=>(
-                        <li key={todo.id}
-                            className='list-group-item'
-                        >
-                            <p className={`${todo.done && 'complete'}`}
-                                onClick={()=>{handleDoneTask(todo.id)}}
-                            >{i+1 }.{todo.desc}</p>
-                            <button 
-                                onClick={()=>{handleDelete(todo.id)}}
-                                className='btn btn-danger'>Borrar</button> 
-                        </li>
-                    ))
-                }
-                </ul>
+                <TodoList 
+                    todos={todos}
+                    handleDoneTask={handleDoneTask}
+                    handleDelete={handleDelete}/>
                 
             </div>
             <div className='col-5'>
-                <h4>Agregar TODO</h4>
-                <hr/>
-                <form onSubmit={handleSubmit}>
-                <input
-                    type='text'
-                    name='description'
-                    className='form-control'
-                    placeholder='Escribe una tarea'
-                    autoComplete='off'
-                    value={description}
-                    onChange={handleInputChange}
-                />
-                <button type='submit' className='btn btn-block btn-outline-primary  mt-1 '>Agregar</button>
-                </form>
+               <TodoAddForm handleTodoAdd={handleTodoAdd}/>
             </div>
         </div>
         
