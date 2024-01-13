@@ -15,7 +15,7 @@ const init=()=>{
 export const TodoApp = () => {
 
     const [todos, dispatch] = useReducer(todoReducer, [],init)
-    console.log(todos)
+    
 
     const [{description}, handleInputChange,resetForm]=useForm({
         description:''
@@ -56,6 +56,13 @@ export const TodoApp = () => {
         dispatch(actionDelete);
 
     }
+    const handleDoneTask =(todoId)=>{
+        const actionDone={
+            type:'done',
+            payload:todoId
+        }
+        dispatch(actionDone);
+    }
 
   return (
     <div>
@@ -69,7 +76,9 @@ export const TodoApp = () => {
                         <li key={todo.id}
                             className='list-group-item'
                         >
-                            <p className='text-center '>{i+1 }.{todo.desc}</p>
+                            <p className={`${todo.done && 'complete'}`}
+                                onClick={()=>{handleDoneTask(todo.id)}}
+                            >{i+1 }.{todo.desc}</p>
                             <button 
                                 onClick={()=>{handleDelete(todo.id)}}
                                 className='btn btn-danger'>Borrar</button> 
