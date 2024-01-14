@@ -21,5 +21,5 @@ import { HookApp } from './HookApp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-     <AppRouter/>
+     <MainApp/>
  );
