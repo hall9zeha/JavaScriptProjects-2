@@ -13,11 +13,13 @@ import { MemoHook } from './components/06-memos/MemoHook';
 import { Memorize } from './components/06-memos/Memorize';
 import { IntroReducer } from './components/07-useReducer/IntroReducer';
 import { TodoApp } from './components/07-useReducer/TodoApp';
+import { AppRouter } from './components/08-useContext/AppRouter';
+import { MainApp } from './components/08-useContext/MainApp';
 import { HookApp } from './HookApp';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-     <TodoApp/>
+     <AppRouter/>
  );
