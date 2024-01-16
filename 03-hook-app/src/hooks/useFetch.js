@@ -27,6 +27,13 @@ export const useFetch = (url) => {
         })
       }
     })
+    .catch(()=>{
+      setState({
+        data:null,
+        loading:false,
+        error:"Can't fetch data of  API" 
+      })
+    })
 
 
   },[url])
