@@ -9,7 +9,7 @@ export default function RealExampleUseRef() {
     <div>
         <h1>RealExampleUseRef</h1>
         <hr/>
-        { show && <MultipleCustomHooks/>}
+        { show && <MultipleCustomHooks data-testid='multiple-custom-hooks'/>}
         <button className='btn btn-primary mt-3'
                 onClick={()=>setShow(!show)}
         >

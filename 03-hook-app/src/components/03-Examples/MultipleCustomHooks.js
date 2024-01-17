@@ -13,7 +13,7 @@ export const MultipleCustomHooks = () => {
     <div>
       <h3>BreakingBad quotes</h3>
       <hr/>
-      <div>
+      <div  data-testid='multiple-custom-hooks'>
       {
         loading ? (
           <div className='alert alert-info text-center'>

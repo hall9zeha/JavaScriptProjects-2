@@ -6,7 +6,9 @@ exports[`Tests in MultipleCustomHooks should show successful 1`] = `
     BreakingBad quotes
   </h3>
   <hr />
-  <div>
+  <div
+    data-testid="multiple-custom-hooks"
+  >
     <div
       className="alert alert-info text-center"
     >
