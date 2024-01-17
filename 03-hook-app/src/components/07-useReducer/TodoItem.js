@@ -9,6 +9,7 @@ export const TodoItem = ({todo,index, handleDoneTask, handleDelete}) => {
             onClick={()=>{handleDoneTask(todo.id)}}
         >{index+1 }.{todo.desc}</p>
         <button 
+            data-testid='btn-delete'
             onClick={()=>{handleDelete(todo.id)}}
             className='btn btn-danger'>Borrar</button> 
     </li>

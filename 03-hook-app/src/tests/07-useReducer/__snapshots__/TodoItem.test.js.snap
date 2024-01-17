@@ -5,14 +5,16 @@ exports[`Tests in <TodoItem/> Component should show  successful 1`] = `
   className="list-group-item"
 >
   <p
-    className="undefined"
+    className="false"
     onClick={[Function]}
   >
     1
     .
+    learning Android multiplatform
   </p>
   <button
     className="btn btn-danger"
+    data-testid="btn-delete"
     onClick={[Function]}
   >
     Borrar
