@@ -20,7 +20,7 @@ describe('Tests in <TodoAddForm/> component', () => {
         expect(wrapper.toJSON()).toMatchSnapshot()
       })
 
-    test("should't  call handleTodoadd function",async ()=>{
+    test("should't  call handleTodoAdd function",async ()=>{
         //El hecho de buscar con findByType devuelve una promesa por eso debe ser async
         const form = await wrapper.root.findByType('form');
         act(()=>{
@@ -29,5 +29,32 @@ describe('Tests in <TodoAddForm/> component', () => {
         //La función no debe llamarse ni una sola vez
         expect(handleTodoAddMock).toHaveBeenCalledTimes(0)
     })
-    
+    test('should call to handleTodoAdd function', async()=>{
+        const value = 'Learn Ruby';
+        const input = await wrapper.root.findByType('input');
+
+        act(()=>{
+            input.props.onChange({target:{value,name:'description'}})
+        })
+
+        const form = await wrapper.root.findByType('form');
+        act(()=>{
+            form.props.onSubmit({preventDefault(){}})
+        })
+        //Ahora si la función  debe llamarse una vez
+        expect(handleTodoAddMock).toHaveBeenCalledTimes(1)
+        //Probamos que se haya devuleto un objeto que no se vació
+        expect(handleTodoAddMock).toHaveBeenCalledWith(
+            {
+                //Como nuestro id es el tiempo en milisegundos, cambiará cada vez
+                //así que solo pediremos que sea un número
+                id:expect.any(Number),
+                desc:value,
+                done:false
+            }
+        )
+        //Después del submit debe limpiarse la caja de texto y estar vacía
+        expect(input.props.value).toBe('')
+
+    })
 })
