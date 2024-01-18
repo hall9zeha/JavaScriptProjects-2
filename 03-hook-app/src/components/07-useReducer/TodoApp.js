@@ -65,7 +65,7 @@ export const TodoApp = () => {
                 
             </div>
             <div className='col-5'>
-               <TodoAddForm handleTodoAdd={handleTodoAdd}/>
+               <TodoAddForm handleTodoAdd={handleTodoAdd} />
             </div>
         </div>
         
