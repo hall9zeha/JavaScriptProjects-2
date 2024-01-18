@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests in <TodoList/> component should show successful 1`] = `
+<ul
+  className="list-group list-group-flush"
+>
+  <li
+    className="list-group-item"
+  >
+    <p
+      className="false"
+      onClick={[Function]}
+    >
+      1
+      .
+      learning Android multiplatform
+    </p>
+    <button
+      className="btn btn-danger"
+      data-testid="btn-delete"
+      onClick={[Function]}
+    >
+      Borrar
+    </button>
+  </li>
+  <li
+    className="list-group-item"
+  >
+    <p
+      className="false"
+      onClick={[Function]}
+    >
+      2
+      .
+      learning Angular
+    </p>
+    <button
+      className="btn btn-danger"
+      data-testid="btn-delete"
+      onClick={[Function]}
+    >
+      Borrar
+    </button>
+  </li>
+</ul>
+`;

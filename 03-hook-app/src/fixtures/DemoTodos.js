@@ -1,10 +1,10 @@
 export const todos = [{
-    id:new Date().getTime(),
+    id:1,
      desc:'learning Android multiplatform',
      done:false
  },
  {
-    id:new Date().getTime(),
+    id:2,
      desc:'learning Angular',
      done:false
  }]
