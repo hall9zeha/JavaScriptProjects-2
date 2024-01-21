@@ -1,12 +1,14 @@
 import { Navigate, useNavigate, useParams } from "react-router-dom"
 import { getHeroById } from "../../selectors/getHeroById";
+import { useMemo } from "react";
 
 
 export const HeroScreen = () => {
   const {heroId} = useParams();
   const navigate = useNavigate();
 
-  const hero=getHeroById(heroId)
+  //Solo se llamará una vez gracias  a useMemo y se volverá a llamar si por alguna razón cambia heroId
+  const hero= useMemo(()=> getHeroById(heroId),[heroId])
 
   const handleReturn = ()=>{
     //-1 navega a la pantalla anterior dentro del historial
