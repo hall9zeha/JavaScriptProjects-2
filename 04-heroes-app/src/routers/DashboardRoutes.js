@@ -10,6 +10,7 @@ export const DashboardRoutes = () => {
     <>
         {/* Para mostrar solo el navbar  cuando se navegue a los siguiente componentes */}
         <Navbar/>
+        <div className="container">
         <Routes>
             <Route path='/' element={<MarvelScreen/>}/>
             <Route path='marvel' element={<MarvelScreen/>}/>
@@ -18,6 +19,7 @@ export const DashboardRoutes = () => {
             <Route path='hero' element={<HeroScreen/>}/>
             
         </Routes>
+        </div>
     </>
   )
 }
