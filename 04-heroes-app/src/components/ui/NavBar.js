@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, NavLink , useNavigate} from 'react-router-dom';
 
 import { AuthContext } from '../../auth/authContext';
+import { Types } from '../../types/Types';
 
 
 export const Navbar = () => {
@@ -11,6 +12,9 @@ export const Navbar = () => {
 
     const navigate = useNavigate();
     const handleLogout=()=>{
+        //Enviamos la acción de cerrar sesión a nuestro authReducer compartido 
+        //en todos los elementos hijos de la aplicación con AuthContext.Provider
+        dispatch({type:Types.logout});
         navigate('/login',{
             replace:true
         })
