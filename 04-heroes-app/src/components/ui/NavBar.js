@@ -8,7 +8,7 @@ import { Types } from '../../types/Types';
 export const Navbar = () => {
     //Obtnemos los valores compartidos del authContext 
     const {user,dispatch} = useContext(AuthContext);
-    const {logged,name} = user;
+    const {name} = user;
 
     const navigate = useNavigate();
     const handleLogout=()=>{
