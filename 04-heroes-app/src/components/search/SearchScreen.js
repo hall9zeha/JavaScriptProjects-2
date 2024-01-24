@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import queryString from 'query-string'
+//import queryString from 'query-string' //Esta importación genera problemas al realizar los test y generar snapshots
 import { useForm } from '../../hooks/useForm'
 import { HeroCard } from '../hero/HeroCard'
 import { getHeroByName } from '../../selectors/getHeroByName'
@@ -9,12 +9,19 @@ export const SearchScreen = () => {
 
   const location = useLocation();
   //Leemos la query de búsqueda contenida en location gracias a la librería "npm install query-string" 
-  const {q=''} = queryString.parse(location.search)
+  //const {q=''} = queryString.parse(location.search)
 
-  const [formValues, handleInputChange] = useForm({searchText:q})
+  //Cambiamos a react-router-dom library porque la librería 'query-string' nos da problemas al realizar los tests con RTL
+  const queryParams = new URLSearchParams(location.search);
+  console.log(queryParams)
+  const value = queryParams.get('q') ? queryParams.get('q'): '';
+ 
+
+
+  const [formValues, handleInputChange] = useForm({searchText:value})
   const {searchText} = formValues;
 
-  const heroesFiltered = useMemo(()=> getHeroByName(q),[q])
+  const heroesFiltered = useMemo(()=> getHeroByName(value),[value])
   const navigate = useNavigate();
 
 
@@ -51,10 +58,10 @@ export const SearchScreen = () => {
           <h4>Resultados</h4>
           <hr/>
           {
-            (q ==='')
+            (value ==='')
             ? <div className='alert alert-info'> Buscar un héroe</div>
             :(heroesFiltered.length ===0)
-            && <div className='alert alert-danger'> no hay resultados : {q}</div>
+            && <div className='alert alert-danger'> no hay resultados : {value}</div>
           }
           {
             heroesFiltered.map(hero=>(
