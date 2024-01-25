@@ -59,9 +59,9 @@ export const SearchScreen = () => {
           <hr/>
           {
             (value ==='')
-            ? <div className='alert alert-info'> Buscar un héroe</div>
+            ? <div className='alert alert-info'>Buscar un héroe</div>
             :(heroesFiltered.length ===0)
-            && <div className='alert alert-danger'> no hay resultados : {value}</div>
+            && <div className='alert alert-danger'>no hay resultados : {value}</div>
           }
           {
             heroesFiltered.map(hero=>(

@@ -45,7 +45,7 @@ Array [
       <div
         className="alert alert-info"
       >
-         Buscar un héroe
+        Buscar un héroe
       </div>
     </div>
   </div>,
