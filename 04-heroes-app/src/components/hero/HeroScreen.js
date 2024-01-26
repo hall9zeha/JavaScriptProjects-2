@@ -14,6 +14,11 @@ export const HeroScreen = () => {
     //-1 navega a la pantalla anterior dentro del historial
     navigate(-1)
   }
+  //Si se retorna undefine por alguna razón redireccionamos a la raíz
+  if(!hero){
+      return <Navigate to='/' />
+    
+  }
 
   const  {
     id,
@@ -23,13 +28,9 @@ export const HeroScreen = () => {
     first_appearance,
     characters
   } = hero;
-  
+
   const imagePath = `/assets/${id}.jpg`;
 
-  //Si se retorna undefine por alguna razón redireccionamos a la raíz
-  if(!hero){
-    return <Navigate to='/' />
-  }
   return (
     <div className="row mt-5">
       <div className="col-4">

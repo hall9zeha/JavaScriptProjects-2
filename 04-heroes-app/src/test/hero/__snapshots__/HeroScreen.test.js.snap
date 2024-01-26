@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests in <HeroScreen/> component should  show a HeroScreen if have a hero parameter in url 1`] = `
+<div
+  className="row mt-5"
+>
+  <div
+    className="col-4"
+  >
+    <img
+      alt="Spider Man"
+      className="img-thumbnail animate__animated animate__fadeInLeft"
+      src="/assets/marvel-spider.jpg"
+    />
+  </div>
+  <div
+    className="col-8 animate__animated animate__fadeIn"
+  >
+    <h3>
+      Spider Man
+    </h3>
+    <ul
+      className="list-group list-group-flush "
+    >
+      <li
+        className="list-group-item"
+      >
+        <b>
+          Alter ego:
+        </b>
+        Peter Parker
+      </li>
+      <li
+        className="list-group-item"
+      >
+        <b>
+          Publisher:
+        </b>
+        Marvel Comics
+      </li>
+      <li
+        className="list-group-item"
+      >
+        <b>
+          First Appearance:
+        </b>
+        Amazing Fantasy #15
+      </li>
+    </ul>
+    <h5
+      className="mt-3"
+    >
+      Characters
+    </h5>
+    <p>
+      Peter Parker
+    </p>
+    <button
+      className="btn btn-outline-info"
+      onClick={[Function]}
+    >
+      Regresar
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Tests in <HeroScreen/> component should return No hero pages if hero not exists 1`] = `
+<h1>
+  No hero page
+</h1>
+`;
+
+exports[`Tests in <HeroScreen/> component should t  show HeroScreen if haven t a hero in url 1`] = `
+<h1>
+  No hero page
+</h1>
+`;
