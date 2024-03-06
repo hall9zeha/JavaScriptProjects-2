@@ -3,9 +3,10 @@
 // pero usaremos npm install @reduxjs/toolkit que es lo que se recomienda
 
 //import { legacy_createStore as createStore } from "redux";
-import { combineReducers, configureStore} from "@reduxjs/toolkit";
+import { applyMiddleware, combineReducers, configureStore} from "@reduxjs/toolkit";
 //import {combineReducers, createStore} from "redux"
 import { authReducer } from "../reducers/authReducer";
+import { thunk } from "redux-thunk";
 
 // Al no poder enviar más de un reducer a través de configureStore usamos combineReducers
 
@@ -19,4 +20,4 @@ import { authReducer } from "../reducers/authReducer";
 
 export const  store = configureStore({reducer:{
     auth:authReducer
-}})
+}},applyMiddleware(thunk))

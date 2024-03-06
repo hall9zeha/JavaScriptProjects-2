@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import { useDispatch } from 'react-redux'
-import { login } from '../../actions/auth'
+import { login, startLoginAsyncExample } from '../../actions/auth'
 
 export const LoginScreen = () => {
 
@@ -19,6 +19,9 @@ export const LoginScreen = () => {
   const handleEventLogin = (e) =>{
     e.preventDefault();
     dispatch(login(123456,'Martha'))
+    
+    // Ejemplo de acción asíncrona para probar que la configuración middleware en redux funciona correctamente
+    // dispatch(startLoginAsyncExample(email,password));
   }
 
   return (
