@@ -1,5 +1,6 @@
 // Las acciones no son más que simples funciones que representan nuestros casos de uso
 
+import { firebase, googleAuthProvider } from "../firebase/firebaseConfig";
 import { types } from "../types/Types";
 
 export const startLoginAsyncExample = (email, password) =>{
@@ -10,6 +11,15 @@ export const startLoginAsyncExample = (email, password) =>{
     }
 }
 
+export const startLoginWithGoogle = ()=>{
+    return (dispatch)=>{
+        firebase.auth().signInWithPopup(googleAuthProvider)
+            .then(({user})=>{
+                dispatch(
+                login(user.uid,user.displayName))
+            })
+    }
+}
 // La siguiente función retornará un objeto
 export const login = (uid, displayName)=>({
     type: types.login,

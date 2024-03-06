@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import { useDispatch } from 'react-redux'
-import { login, startLoginAsyncExample } from '../../actions/auth'
+import { login, startLoginAsyncExample, startLoginWithGoogle } from '../../actions/auth'
 
 export const LoginScreen = () => {
 
@@ -23,7 +23,9 @@ export const LoginScreen = () => {
     // Ejemplo de acción asíncrona para probar que la configuración middleware en redux funciona correctamente
     // dispatch(startLoginAsyncExample(email,password));
   }
-
+  const handleLoginWithGoogle =()=>{
+    dispatch(startLoginWithGoogle());
+  }
   return (
     <>
       <h3 className='auth__title'>Login</h3>
@@ -55,7 +57,9 @@ export const LoginScreen = () => {
     
         <div className='auth__social-networks'>
           <p>Login with social networks</p>
-              <div  className="google-btn" >
+              <div  className="google-btn" 
+                    onClick={handleLoginWithGoogle}
+              >
                   <div className="google-icon-wrapper">
                       <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/archive/c/c1/20210618182605%21Google_%22G%22_logo.svg" alt="google button" />
                   </div>
