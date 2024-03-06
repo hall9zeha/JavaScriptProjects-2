@@ -7,6 +7,7 @@ import { applyMiddleware, combineReducers, configureStore} from "@reduxjs/toolki
 //import {combineReducers, createStore} from "redux"
 import { authReducer } from "../reducers/authReducer";
 import { thunk } from "redux-thunk";
+import { uiReducer } from "../reducers/uiReducer";
 
 // Al no poder enviar más de un reducer a través de configureStore usamos combineReducers
 
@@ -19,5 +20,6 @@ import { thunk } from "redux-thunk";
 
 
 export const  store = configureStore({reducer:{
-    auth:authReducer
+    auth:authReducer,
+    ui:uiReducer
 }},applyMiddleware(thunk))
