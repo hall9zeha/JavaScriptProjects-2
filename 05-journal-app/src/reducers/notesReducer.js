@@ -1,3 +1,4 @@
+import { types } from "../types/Types";
 
 const initialState ={
     notes:[],
@@ -6,7 +7,15 @@ const initialState ={
 
 export const notesReducer = (state=initialState, action)=>{
     switch (action.type) {
-        
+        case types.notesActive:
+            return{
+                //Recuerda que se hace esto "...your_object" para no mutar el objeto principal sino crear una nueva copia del mismo
+                //Evitando problemas con las referencias directas
+                ...state, 
+                active:{
+                    ...action.payload
+                }
+            }
     
         default:
             return state;
