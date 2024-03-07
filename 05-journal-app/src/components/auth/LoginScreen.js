@@ -10,7 +10,7 @@ export const LoginScreen = () => {
 
   const dispatch = useDispatch()
 
-  const {msgError} = useSelector(state=>state.ui)
+  const {msgError, loading} = useSelector(state=>state.ui)
 
   const [formValues, handleInputChange ] = useForm({
     email:'martha@mail.com',
@@ -75,6 +75,7 @@ export const LoginScreen = () => {
 
           type='submit'
           className='btn btn-primary btn-block'
+          disabled={loading}
         >
           Login
         </button>

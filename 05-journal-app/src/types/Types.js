@@ -7,6 +7,6 @@ export const types={
 
     // Loading types
     uiStartLoading:'[UI] Start loading',
-    uifinishLoading: '[UI] Finish loading'
+    uiFinishLoading: '[UI] Finish loading'
 
 }

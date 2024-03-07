@@ -14,6 +14,6 @@ export const uiStartLoading =()=>({
     payload:true
 })
 export const uiFinishLoading = ()=>({
-    type:types.uifinishLoading,
+    type:types.uiFinishLoading,
     payload:false
 })
