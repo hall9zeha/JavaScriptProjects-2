@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {firebase} from '../firebase/firebaseConfig'
 /*
 Ya que react router 5 es todavía muy utilizado este proyecto implementará dicha versión
@@ -20,6 +20,7 @@ import { login } from '../actions/auth';
 export const AppRouter = () => {
 
     const dispatch = useDispatch();
+    const [cheking, setCheking] = useState(true);
 
     // Observador que mostrara los estados de autenticación de firebase cuando estos cambien (login or logout)
     // nos devolverá el objeto correspondiente (user credentials or null)
@@ -29,9 +30,15 @@ export const AppRouter = () => {
             if(user?.uid){
                 dispatch(login(user.uid,user.displayName));
             }
+            setCheking(false);   
         })
-    }, [])//[] Dependencias vacías para que se ejecute una sola vez si se vuelve a renderizar algún componente
-
+    }, [dispatch,setCheking])//[] Dependencias vacías para que se ejecute una sola vez si se vuelve a renderizar algún componente o
+    // ya que dispatch y setChecking no van a cambiar tampoco se ejecutará nuevamente nustro observable, podemos incluirlos dentro [.]
+    if(cheking){
+        return (
+            <h1>Espere...</h1>
+        )
+    }
   return (
     <Router>
         <div>
