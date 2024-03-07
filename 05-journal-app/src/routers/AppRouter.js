@@ -11,10 +11,12 @@ import{
     Route,
     Redirect
 } from "react-router-dom";
+import { PrivateRoute } from './PrivateRoute';
 import { AuthRouter } from './AuthRouter';
 import { JournalScreen } from '../components/journal/JournalScreen';
 import { useDispatch } from 'react-redux';
 import { login } from '../actions/auth';
+import { PublicRoute } from './PublicRoute';
 
 
 export const AppRouter = () => {
@@ -50,11 +52,13 @@ export const AppRouter = () => {
     <Router>
         <div>
             <Switch>
-                <Route
+                <PublicRoute
                     path="/auth"
                     component={AuthRouter}
+                    isAuthenticated={isLogged}
                 />
-                <Route
+                <PrivateRoute
+                    isAuthenticated={isLogged}
                     exact
                     path="/"
                     component={JournalScreen}
