@@ -1,24 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
-import { useDispatch } from 'react-redux'
-import { login, startLoginAsyncExample, startLoginWithGoogle } from '../../actions/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import validator from 'validator'
+import { login, startLoginAsyncExample, startLoginWithEmailPassword, startLoginWithGoogle } from '../../actions/auth'
+import { removeError, setError } from '../../actions/ui'
 
 export const LoginScreen = () => {
 
   const dispatch = useDispatch()
 
+  const {msgError} = useSelector(state=>state.ui)
 
   const [formValues, handleInputChange ] = useForm({
-    email:'martha@gmail.com',
-    password:12345678
+    email:'martha@mail.com',
+    password:'123456'
   })
 
   const {email,password} = formValues
 
   const handleEventLogin = (e) =>{
     e.preventDefault();
-    dispatch(login(123456,'Martha'))
+    if(handleValidateForm()){
+      dispatch(startLoginWithEmailPassword(email,password))
+    }
     
     // Ejemplo de acción asíncrona para probar que la configuración middleware en redux funciona correctamente
     // dispatch(startLoginAsyncExample(email,password));
@@ -26,10 +31,29 @@ export const LoginScreen = () => {
   const handleLoginWithGoogle =()=>{
     dispatch(startLoginWithGoogle());
   }
+
+  const handleValidateForm = () =>{
+    if(email.trim().length === 0 || !validator.isEmail(email) ){
+      dispatch(setError("Email is not valid or is empty"))
+      return false;
+    }else if(password.trim().length ===0){
+      dispatch(setError("Password required"))
+      return false;
+    }
+    dispatch(removeError());
+    return true;
+  }
+
   return (
     <>
       <h3 className='auth__title'>Login</h3>
       <form onSubmit={handleEventLogin}>
+         {/* Si el msgError no es nulo entonces mostrará un elemento div con el mesaje */}
+          {
+            msgError && (
+              <div className='auth__alert-error'>{msgError}</div>
+            )
+          }
         <input
           type='text'
           placeholder='Email'

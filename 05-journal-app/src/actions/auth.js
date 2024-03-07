@@ -3,11 +3,18 @@
 import { firebase, googleAuthProvider } from "../firebase/firebaseConfig";
 import { types } from "../types/Types";
 
-export const startLoginAsyncExample = (email, password) =>{
+
+
+export const startLoginWithEmailPassword = (email, password) =>{
     return (dispatch)=>{
-        setTimeout(() => {
-            dispatch(login(5555555,'Barry'))
-        }, 2500);
+        firebase.auth().signInWithEmailAndPassword(email,password)
+            .then(({user})=>{
+                dispatch(login(user.uid,user.displayName))
+            })
+            .catch(e=>{
+                console.log(e)
+            })
+        
     }
 }
 
@@ -25,6 +32,10 @@ export const startRegisterWithEmailPasswordName = (email, password,name)=>{
         firebase.auth().createUserWithEmailAndPassword(email,password)
             .then(async({user}) =>{
                 await user.updateProfile({displayName:name});
+                dispatch(login(user.uid,user.displayName));
+            })
+            .catch(e=>{
+                console.log(e)
             })
     }
 }
