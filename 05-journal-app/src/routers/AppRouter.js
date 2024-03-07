@@ -21,6 +21,7 @@ export const AppRouter = () => {
 
     const dispatch = useDispatch();
     const [cheking, setCheking] = useState(true);
+    const [isLogged, setIsLogged] = useState(false);
 
     // Observador que mostrara los estados de autenticación de firebase cuando estos cambien (login or logout)
     // nos devolverá el objeto correspondiente (user credentials or null)
@@ -29,11 +30,17 @@ export const AppRouter = () => {
             // Si el usuario no es nulo
             if(user?.uid){
                 dispatch(login(user.uid,user.displayName));
+                setIsLogged(true)
+            }else{
+                setIsLogged(false)
             }
+            // Si deveulve datos de usuario correctamente la espera se detendrá 
             setCheking(false);   
         })
     }, [dispatch,setCheking])//[] Dependencias vacías para que se ejecute una sola vez si se vuelve a renderizar algún componente o
     // ya que dispatch y setChecking no van a cambiar tampoco se ejecutará nuevamente nustro observable, podemos incluirlos dentro [.]
+    
+    //Para mostrar las vistas principales esperamos a la comprobación de si estamos autenticados o no
     if(cheking){
         return (
             <h1>Espere...</h1>
