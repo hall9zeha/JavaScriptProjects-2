@@ -21,7 +21,7 @@ export const LoginScreen = () => {
 
   const handleEventLogin = (e) =>{
     e.preventDefault();
-    if(handleValidateForm()){
+    if(handleValidateForm()){ 
       dispatch(startLoginWithEmailPassword(email,password))
     }
     

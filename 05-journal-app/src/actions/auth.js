@@ -1,5 +1,6 @@
 // Las acciones no son más que simples funciones que representan nuestros casos de uso
 
+import Swal from "sweetalert2";
 import { firebase, googleAuthProvider } from "../firebase/firebaseConfig";
 import { types } from "../types/Types";
 import { uiFinishLoading, uiStartLoading } from "./ui";
@@ -16,6 +17,7 @@ export const startLoginWithEmailPassword = (email, password) =>{
             })
             .catch(e=>{
                 dispatch(uiFinishLoading())
+                Swal.fire('Error',e.message,'error');
                 console.log(e)
             })
         
@@ -39,7 +41,9 @@ export const startRegisterWithEmailPasswordName = (email, password,name)=>{
                 dispatch(login(user.uid,user.displayName));
             })
             .catch(e=>{
+                Swal.fire('Error',e.message,'error');
                 console.log(e)
+                
             })
     }
 }
