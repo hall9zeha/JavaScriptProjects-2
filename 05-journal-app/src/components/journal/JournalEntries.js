@@ -14,7 +14,8 @@ export const JournalEntries = () => {
         {
             notes.map(note=>(
                 <JournalEntry key={note.id}
-                  {...note} 
+                  //Enviamos cada nota como argumento
+                  {...note}
                 />
             ))
         }

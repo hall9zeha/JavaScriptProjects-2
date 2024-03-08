@@ -1,12 +1,23 @@
 import moment from 'moment'
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { activeNote } from '../../actions/notes';
 
-export const JournalEntry = ({id,date,title,body,url}) => {
-
+export const JournalEntry = (note) => {
+  const {id,date,title,body,url} = note;
   const customDate = moment(date);
-  
+  const dispatch = useDispatch();
+
+  const handleEntryClick=()=>{
+    dispatch(
+      activeNote(id,note)
+    )
+  }
+
   return (
-    <div className='journal__entry pointer'>
+    <div 
+      onClick={handleEntryClick}
+      className='journal__entry pointer'>
       {
         // Si la url existe y no es undefined o null mostrar 
         url &&

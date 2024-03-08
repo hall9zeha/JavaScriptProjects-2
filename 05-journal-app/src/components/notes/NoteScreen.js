@@ -1,7 +1,13 @@
 import React from 'react'
 import { NotesAppBar } from './NotesAppBar'
+import { useSelector } from 'react-redux'
+import { useForm } from '../../hooks/useForm'
 
 export const NoteScreen = () => {
+    //Renombramos el objeto desestructurado 'active' a 'note' active:note
+    const {active:note} = useSelector(state =>state.notes)
+    const [formValues, handleInputChange] = useForm(note);
+    const {body, title} = formValues
   return (
     <div className='notes__main-content'>
         <NotesAppBar/>
@@ -10,10 +16,14 @@ export const NoteScreen = () => {
                 type='text'
                 placeholder='Some awesome'
                 className='notes__title-input'
+                value={title}
+                onChange={handleInputChange}
                 />
             <textarea
                 placeholder='What happened today'
                 className='notes__textarea'
+                value={body}
+                onChange={handleInputChange}
             ></textarea>
             <div className='notes__image'>
                 <img
