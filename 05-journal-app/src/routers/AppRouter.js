@@ -17,6 +17,8 @@ import { JournalScreen } from '../components/journal/JournalScreen';
 import { useDispatch } from 'react-redux';
 import { login } from '../actions/auth';
 import { PublicRoute } from './PublicRoute';
+import { loadNotes } from '../helpers/loadNotes';
+import { setNotes } from '../actions/notes';
 
 
 export const AppRouter = () => {
@@ -28,11 +30,14 @@ export const AppRouter = () => {
     // Observador que mostrara los estados de autenticación de firebase cuando estos cambien (login or logout)
     // nos devolverá el objeto correspondiente (user credentials or null)
     useEffect(()=>{
-        firebase.auth().onAuthStateChanged((user)=>{
+        firebase.auth().onAuthStateChanged(async (user)=>{
             // Si el usuario no es nulo
             if(user?.uid){
                 dispatch(login(user.uid,user.displayName));
                 setIsLogged(true)
+                const notes = await loadNotes(user.uid)
+                dispatch(setNotes(notes));
+
             }else{
                 setIsLogged(false)
             }
