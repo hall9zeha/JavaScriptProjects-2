@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import { db } from "../firebase/firebaseConfig";
 import { loadNotes } from "../helpers/loadNotes";
 import { types } from "../types/Types";
+import { fileUpload } from "../helpers/fileUpload";
 
 export const startNewNote = () =>{
     // getState es el segundo parámetro proveido por redux-thunk que nos permite despachar las acciones
@@ -71,3 +72,11 @@ export const refreshNoteById = (id, note)=>({
         note:{id,...note}
     }
 })
+
+export const startUploading = (file)=>{
+    return async(dispatch, getState) =>{
+        const {active:currentNote} = getState().notes;
+        const fileUrl = await fileUpload(file)
+        console.log(fileUrl);
+    }
+}
