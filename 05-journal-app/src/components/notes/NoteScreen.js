@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from 'react'
 import { NotesAppBar } from './NotesAppBar'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from '../../hooks/useForm'
+import { activeNote } from '../../actions/notes'
 
 export const NoteScreen = () => {
+
+    const dispatch = useDispatch();
     //Renombramos el objeto desestructurado 'active' a 'note' active:note
     const {active:note} = useSelector(state =>state.notes)
     const [formValues, handleInputChange, reset] = useForm(note);
@@ -24,7 +27,12 @@ export const NoteScreen = () => {
             activeNoteId.current = note.id
         } 
     },[note,reset])
-    
+
+    //Otro useEffect para actualizar el estado de la nota activa cuando escribimos algo dentro de sus campos
+    useEffect(()=>{
+        dispatch(activeNote(formValues.id,{...formValues}))
+    },[formValues,dispatch])
+
   return (
     <div className='notes__main-content'>
         <NotesAppBar/>
@@ -33,14 +41,17 @@ export const NoteScreen = () => {
                 type='text'
                 placeholder='Some awesome'
                 className='notes__title-input'
+                name='title'
                 value={title}
                 onChange={handleInputChange}
                 />
             <textarea
                 placeholder='What happened today'
                 className='notes__textarea'
+                name='body'
                 value={body}
                 onChange={handleInputChange} 
+            
             ></textarea>
             {
                 note.url &&

@@ -12,7 +12,8 @@ export const startNewNote = () =>{
         const newNote = {
             title:'',
             body:'',
-            date: new Date().getTime()
+            date: new Date().getTime(),
+            url:''
         }
         const docRef = await db.collection(`${uid}/journal/notes`).add(newNote)
         // Un vez creada la nota en firebase solo necesitaremos su id y enviaremos nuevamente el objeto newNote
@@ -41,3 +42,17 @@ export const setNotes = (notes) =>({
     type:types.notesLoad,
     payload:notes
 })
+
+export const startSaveNote = (note) =>{
+    //dispatch y getState proporcionados por el middleware de thunk 
+    return async(dispatch,getState)=>{
+        //getState podemos acceder a los objetos dentro de nuestros estados en redux, nos ahorra
+        //tener que enviar y recibir argumentos entre funciones
+        const {uid} = getState().auth
+        const noteToFirebase = {...note}
+        delete  noteToFirebase.id; //No necesitamos ni debemos actualizar el id de la nota
+        await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirebase)
+
+
+    }
+}
