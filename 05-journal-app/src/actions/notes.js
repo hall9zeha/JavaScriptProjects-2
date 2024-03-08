@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { db } from "../firebase/firebaseConfig";
 import { loadNotes } from "../helpers/loadNotes";
 import { types } from "../types/Types";
@@ -53,6 +54,20 @@ export const startSaveNote = (note) =>{
         delete  noteToFirebase.id; //No necesitamos ni debemos actualizar el id de la nota
         await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirebase)
 
+        //La actualización de los datos de la nota en la vista se hacen después de que se haya actualizado
+        //en la base de datos pero no haciendo una nueva petición(queda a discreción)
+        dispatch(refreshNoteById(note.id,noteToFirebase))
+        
+        //Mensaje nota gaurdada
+        Swal.fire("Successfull saved",note.title,'success');
 
     }
 }
+
+export const refreshNoteById = (id, note)=>({
+    type:types.notesUpdated,
+    payload:{
+        id,
+        note:{id,...note}
+    }
+})
