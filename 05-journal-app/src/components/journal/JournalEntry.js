@@ -1,24 +1,33 @@
+import moment from 'moment'
 import React from 'react'
 
-export const Journalentry = () => {
+export const JournalEntry = ({id,date,title,body,url}) => {
+
+  const customDate = moment(date);
+  
   return (
     <div className='journal__entry pointer'>
-      <div
-        className='journal__entry-picture'
-        style={{
-          backgroundSize:'cover',
-          backgroundImage:'url(https://w.wallhaven.cc/full/j8/wallhaven-j8delp.jpg)'
-        }}  
-      ></div>
+      {
+        // Si la url existe y no es undefined o null mostrar 
+        url &&
+        <div
+          className='journal__entry-picture'
+          style={{
+            backgroundSize:'cover',
+            backgroundImage:`url(${url})`
+          }}
+        ></div>
+      }
+
       <div className='journal__entry-body'>
-        <p className='journal__entry-title'>Un nuevo día</p>
+        <p className='journal__entry-title'>{title}</p>
         <p className='journal__entry-content'>
-          Consectetur eu nisi laborum ea ipsum.
+          {body}
           </p>
       </div>
       <div className='journal__entry-date-box'>
-          <span>Monday</span>
-          <h4>4</h4>
+          <span>{customDate.format('dddd')}</span>
+          <h4>{customDate.format('Do')}</h4>
       </div>
     </div>
   )

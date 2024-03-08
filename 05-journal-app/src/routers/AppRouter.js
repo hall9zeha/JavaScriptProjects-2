@@ -35,7 +35,7 @@ export const AppRouter = () => {
             if(user?.uid){
                 dispatch(login(user.uid,user.displayName));
                 setIsLogged(true)
-                dispatch(startLoadingNotes(user.uid));
+                dispatch(startLoadingNotes(user.uid));  
 
             }else{
                 setIsLogged(false)
