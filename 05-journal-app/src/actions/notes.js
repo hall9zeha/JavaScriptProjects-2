@@ -23,7 +23,7 @@ export const startNewNote = () =>{
         dispatch(activeNote(docRef.id,newNote))
 
         //Agregamos la nueva nota a nuestro estado redux para que aparezca en nuestra lista del sidebar
-        dispatch(addNoteInList({...newNote,id:docRef.id}))
+        dispatch(addNoteInList(docRef.id,newNote))
     }   
         
 }
@@ -35,9 +35,9 @@ export const activeNote = (id, note) =>({
         ...note
     }
 })
-export const addNoteInList=(note)=>({
+export const addNoteInList=(id,note)=>({
     type:types.notesListed,
-    payload:note
+    payload:{id,...note}
 })
 
 export const startLoadingNotes=(uid) =>{
@@ -58,7 +58,7 @@ export const startSaveNote = (note) =>{
         //getState podemos acceder a los objetos dentro de nuestros estados en redux, nos ahorra
         //tener que enviar y recibir argumentos entre funciones
         const {uid} = getState().auth
-
+        
 
         const noteToFirebase = {...note}
         delete  noteToFirebase.id; //No necesitamos ni debemos actualizar el id de la nota
@@ -67,7 +67,7 @@ export const startSaveNote = (note) =>{
         //La actualización de los datos de la nota en la vista se hacen después de que se haya actualizado
         //en la base de datos pero no haciendo una nueva petición(queda a discreción)
         dispatch(refreshNoteById(note.id,noteToFirebase))
-        
+        dispatch(activeNote(note.id,noteToFirebase))
         //Mensaje nota gaurdada
         Swal.fire("Successfull saved",note.title,'success');
 
@@ -108,7 +108,6 @@ export const startUploading = (file)=>{
         
 
         dispatch(startSaveNote(note))
-
         //Una vez completada la carga
         Swal.close();
         console.log(fileUrl);

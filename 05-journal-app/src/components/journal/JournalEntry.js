@@ -17,7 +17,7 @@ export const JournalEntry = (note) => {
   return (
     <div 
       onClick={handleEntryClick}
-      className='journal__entry pointer'>
+      className='journal__entry pointer animate__animated animate__fadeIn animated__faster'>
       {
         // Si la url existe y no es undefined o null mostrar 
         url &&
