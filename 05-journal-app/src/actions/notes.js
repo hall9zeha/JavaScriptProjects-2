@@ -107,3 +107,25 @@ export const startUploading = (file)=>{
         console.log(fileUrl);
     }
 }
+export const startDeleteNote = (id) =>{
+    return async (dispatch, getState) =>{
+        const uid = getState().auth.uid;
+
+        Swal.fire({
+            title:'Deleting',
+            text:'Please wait',
+            allowOutsideClick:false,
+            didOpen:()=>{
+                Swal.showLoading();
+            }
+        })
+        await db.doc(`${uid}/journal/notes/${id}`).delete();
+        Swal.fire('Successfuly delete','Deleted','success');
+        dispatch(deleteLocalNote(id));
+    }
+}
+//Borrar la nota del store de redux localmente
+export const deleteLocalNote =(id)=>({
+    type:types.notesDelete,
+    payload:id
+})
