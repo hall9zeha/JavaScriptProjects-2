@@ -47,7 +47,9 @@ export const LoginScreen = () => {
   return (
     <>
       <h3 className='auth__title'>Login</h3>
-      <form onSubmit={handleEventLogin}>
+      <form onSubmit={handleEventLogin}
+            className='animate__animated animate__fadeIn animated__faster'
+      >
          {/* Si el msgError no es nulo entonces mostrará un elemento div con el mesaje */}
           {
             msgError && (

@@ -21,6 +21,9 @@ export const startNewNote = () =>{
         // Un vez creada la nota en firebase solo necesitaremos su id y enviaremos nuevamente el objeto newNote
         // que está vacío hacia nuestra vista, para actualizar los cambios que hagamos y guardarlos
         dispatch(activeNote(docRef.id,newNote))
+
+        //Agregamos la nueva nota a nuestro estado redux para que aparezca en nuestra lista del sidebar
+        dispatch(addNoteInList({...newNote,id:docRef.id}))
     }   
         
 }
@@ -31,6 +34,10 @@ export const activeNote = (id, note) =>({
         id,
         ...note
     }
+})
+export const addNoteInList=(note)=>({
+    type:types.notesListed,
+    payload:note
 })
 
 export const startLoadingNotes=(uid) =>{
@@ -128,4 +135,8 @@ export const startDeleteNote = (id) =>{
 export const deleteLocalNote =(id)=>({
     type:types.notesDelete,
     payload:id
+})
+
+export const notesLogout=()=>({
+    type:types.notesLogoutCleaning
 })
