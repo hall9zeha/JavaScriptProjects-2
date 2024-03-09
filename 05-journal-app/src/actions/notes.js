@@ -51,6 +51,8 @@ export const startSaveNote = (note) =>{
         //getState podemos acceder a los objetos dentro de nuestros estados en redux, nos ahorra
         //tener que enviar y recibir argumentos entre funciones
         const {uid} = getState().auth
+
+
         const noteToFirebase = {...note}
         delete  noteToFirebase.id; //No necesitamos ni debemos actualizar el id de la nota
         await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirebase)
@@ -76,7 +78,32 @@ export const refreshNoteById = (id, note)=>({
 export const startUploading = (file)=>{
     return async(dispatch, getState) =>{
         const {active:currentNote} = getState().notes;
+
+        //Mostramos un mensaje de carga
+        Swal.fire({
+            title:'Uploading',
+            text:'Please wait',
+            allowOutsideClick:false,
+            didOpen:()=>{
+                Swal.showLoading();
+            }
+        })
+
+
         const fileUrl = await fileUpload(file)
+        
+        //Nos daba error porque estabamos mutando directamente el objeto en el estado y eso no está permitido
+        //currentNote.url=fileUrl; 
+        
+        //Por eso hacemos una copia del objeto y solo modificamos la url
+        const note = {...currentNote,
+                        url:fileUrl }
+        
+
+        dispatch(startSaveNote(note))
+
+        //Una vez completada la carga
+        Swal.close();
         console.log(fileUrl);
     }
 }
