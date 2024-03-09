@@ -4,6 +4,13 @@ export const fileUpload = async (file)=>{
     //Recomendado como buena práctica, pero queda a decisión de cada uno
     const cloudName = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
     
+    // Puede usar directamente la url sin ocultar sus variables
+    // si no lo lleva a producción o a un repositorio público.
+    
+    // Example: https://api.cloudinary.com/v1_1/xxdhsfs/upload
+    // donde (xxdhsfs) es una variable asignada por cloudinary que puede encontrar en su  dashboard
+    // de proyecto en su cuenta de cloudinary.
+
     const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
 
     const formData = new  FormData();
