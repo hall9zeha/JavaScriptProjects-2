@@ -1,4 +1,13 @@
+import cloudinary from 'cloudinary';
 import { fileUpload } from "../../helpers/fileUpload";
+
+//Las constantes de API cloudinary las obtenemos de nuestras variables de entorno
+//que deben de estar protegidas
+cloudinary.config({ 
+    cloud_name: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME, 
+    api_key: process.env.REACT_APP_CLOUDINARY_API_KEY, 
+    api_secret: process.env.REACT_APP_CLOUDINARY_API_SECRET
+  });
 
 describe('Tests in fileUpload helper', () => { 
 
@@ -13,6 +22,16 @@ describe('Tests in fileUpload helper', () => {
         console.log(url)
 
         expect(typeof url).toBe('string')
+       
+        //Eliminamos la imagen en cloudinary, cada vez que realizamos el test se subirá nuevamente la misma imagen
+        //y no queremos eso
+        const segment = url.split('/') // separmos la url devuelta en segmentos
+        const imageId = segment[segment.length-1].replace('.png','')//extraemos el id asignado por cloudinary, sin el .png que es la extensión de nuestra imágen en este caso
+
+        await cloudinary.v2.api.delete_resources(imageId, {} ).then(result=>{
+            console.log(result)
+        })
+        
      })
 
      test('should return an error', async() => { 
