@@ -4,6 +4,7 @@ import { loadNotes } from "../helpers/loadNotes";
 import { types } from "../types/Types";
 import { fileUpload } from "../helpers/fileUpload";
 
+
 export const startNewNote = () =>{
     // getState es el segundo parámetro proveido por redux-thunk que nos permite despachar las acciones
     // y funciona muy parecido a useSelector al acceder a los objetos de nuestros estados en redux, para 
