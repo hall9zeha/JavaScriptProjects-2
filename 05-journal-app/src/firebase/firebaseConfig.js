@@ -7,37 +7,22 @@ import 'firebase/compat/auth'
 // Esta configuración no servirá porque la base de datos a la que hace referencia
 // será desabilitada por el desarrollador una vez el proyecto sea finalizado
 const firebaseConfig = {
-    apiKey: "AIzaSyCapoJtK87FwPs12sWKzgn0-HmWGt76bC0",
-    authDomain: "journalapp-b2cf9.firebaseapp.com",
-    projectId: "journalapp-b2cf9",
-    storageBucket: "journalapp-b2cf9.appspot.com",
-    messagingSenderId: "640786969486",
-    appId: "1:640786969486:web:dd8ad2a8e936db618d6adf",
-    measurementId: "G-TTE22DDRQM"
+    apiKey:process.env.REACT_APP_API_KEY ,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID
   };
-///
 
-const firebaseConfigTesting = {
+  //Estamos usando dos configuraciones de firebase, con variables para cada variante
+  //Tests y Producción en los archivos .env.test y .env.development, los cuales deberán crearse
+  //cuando se descargue el proyecto por primera vez ya que no se subirán al repositorio
   
-    apiKey: "AIzaSyCapoJtK87FwPs12sWKzgn0-HmWGt76bC0",
-    authDomain: "journalapp-b2cf9.firebaseapp.com",
-    projectId: "journalapp-b2cf9",
-    storageBucket: "journalapp-b2cf9.appspot.com",
-    messagingSenderId: "640786969486",
-    appId: "1:640786969486:web:386dd305417e4d7c8d6adf",
-    measurementId: "G-0EB4DRMCPY"
-
-};
-
-if(process.env.NODE_ENV === 'test'){
-  //when testing
-  firebase.initializeApp(firebaseConfigTesting)
-  
-}else{
-  //dev/prod
   firebase.initializeApp(firebaseConfig)
-  
-}
+
+
 const db = firebase.firestore();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
