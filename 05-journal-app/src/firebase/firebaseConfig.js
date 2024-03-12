@@ -19,11 +19,16 @@ const firebaseConfig = {
   //Estamos usando dos configuraciones de firebase, con variables para cada variante
   //Tests y Producción en los archivos .env.test y .env.development, los cuales deberán crearse
   //cuando se descargue el proyecto por primera vez ya que no se subirán al repositorio
-  
+
   firebase.initializeApp(firebaseConfig)
 
 
 const db = firebase.firestore();
+// db.disableNetwork().then(() => {
+//   console.log("La persistencia de datos se ha deshabilitado correctamente.");
+// }).catch((error) => {
+//   console.error("Error al deshabilitar la persistencia de datos:", error);
+// });
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 export {
