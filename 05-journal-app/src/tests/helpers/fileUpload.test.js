@@ -1,3 +1,10 @@
+/**
+ * @jest-environment jsdom
+ */
+
+//Usamos el bloque de comentario anterior para declarar que este contexto debe usar jsdom como entorno para
+//las pruebas, algunas pruebas requieren usar diferentes contextos como 'node' o por defecto 'jsdom'
+
 import cloudinary from 'cloudinary';
 import { fileUpload } from "../../helpers/fileUpload";
 
@@ -9,8 +16,9 @@ cloudinary.config({
     api_secret: process.env.REACT_APP_CLOUDINARY_API_SECRET
   });
 
-describe('Tests in fileUpload helper', () => { 
 
+describe('Tests in fileUpload helper', () => { 
+   
     test('should upload a file and return an url', async() => { 
         const img=await fetch('https://cdn.icon-icons.com/icons2/2845/PNG/512/linux_logo_icon_181333.png');
 

@@ -9,7 +9,14 @@ import configureStore from 'redux-mock-store'
 //La versión de firebase 10.7.* a superiores nos da el error: ReferenceError: TextDecoder is not defined
 //Así que para fines prácticos en este proyecto la versión usada es la 10.6
 
-//TODO usar las nuevas versiones superiores a 10.6.* y tratar de corregir el error ReferenceError: TextDecoder is not defined
+//!!!!MUY IMPORTANTE para realizar pruebas con firebase se necesita cambiar el entorno de pruebas a 'node' y no con 'jsdom'
+//sino nos dará errores como (UNEXPECTED state) revisar la configuración de los scripts en package.json para ver
+//como está configurado nuestro script de test
+//Forma de cambiar el entorno de tests en scripts:
+//"test": "react-scripts test --env=node", por defecto es jsdom.
+
+
+
 import { startLoadingNotes, startNewNote, startSaveNote } from '../../actions/notes'
 import { types } from '../../types/Types';
 import { db } from '../../firebase/firebaseConfig';
@@ -25,35 +32,29 @@ const initState = {
         name:'Unknown'
     }
 }
-const note ={
-    id:'qV3V7Z6Z6cEtWxOiwYOz',
-    title:'modificado',
-    body:'body modificado'
-}
+
 //Gracias a redux mock store podemos simular nuestro store de redux y middlewares
 let store = mockStore(initState)
  
 describe('Tests in notes actions', () => { 
 
     // beforeAll(() => {
+        
     //     global.setImmediate = (callback) => {
     //         setTimeout(callback, 0);
     //     };
         
     // });
     beforeEach(()=>{
-        
-        global.setImmediate = (callback) => {
-            setTimeout(callback, 0);
-        };
-        store=mockStore(initState)
+       store=mockStore(initState)
     })
 
     test('should create new note with startNewNote', async() => { 
-        
+       
          //Al usar await se producía un error de ReferenceError: setImmediate is not defined
          //Pero el registro en firebase se creaba correctamente 
-         //la configuración de beforeAll corrigió este error 
+         //la configuración de beforeAll corrigió este error, pero al cambiar el entorno de pruebas a 'node'
+         //Ya no es necesaria la configuración dentro de beforeAll 
            await store.dispatch(startNewNote());
            const actions = store.getActions();
            expect(actions[0]).toEqual({
@@ -85,9 +86,10 @@ describe('Tests in notes actions', () => {
      })
      test('should fetch all test notes', async() => {
         
-        await db.disableNetwork()//Desabilitamos persistencia de datos local en firestore da un error al hacer tests en esta versión
+        
         
         //TestingUID es el id de nuestra colección en firebase TestingUID/journal/notes/*
+
         await store.dispatch(startLoadingNotes('TestingUID'));
         const actions = store.getActions()
         console.log(actions)
@@ -97,15 +99,19 @@ describe('Tests in notes actions', () => {
         })
       })
       test('should update a note', async() => { 
-          //TODO arreglar no pasa el test con los otros pero ejecutando solo este si 
-            //await db.disableNetwork()
-            
+        const note ={
+                id:'qV3V7Z6Z6cEtWxOiwYOz',
+                title:'modificado',
+                body:'body modificado'
+            }
+                     
             await store.dispatch(startSaveNote(note))
             const actions = store.getActions()
             expect(actions[0].type).toBe(types.notesUpdated)
-            //const docRef = await db.doc(`/TestingUID/journal/notes/${note.uid}`).get()
             
-            // expect(docRef.data().title).toBe(note.title)
+            const docRef = await db.doc(`/TestingUID/journal/notes/${note.id}`).get()
+            
+            expect(docRef.data().title).toBe(note.title)
             console.log(actions)
             
            
