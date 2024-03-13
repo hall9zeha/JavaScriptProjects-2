@@ -1,3 +1,4 @@
+
 import configureStore from 'redux-mock-store'
 
 
@@ -17,9 +18,11 @@ import configureStore from 'redux-mock-store'
 
 
 
-import { startLoadingNotes, startNewNote, startSaveNote } from '../../actions/notes'
+import { startLoadingNotes, startNewNote, startSaveNote, startUploading } from '../../actions/notes'
 import { types } from '../../types/Types';
 import { db } from '../../firebase/firebaseConfig';
+import { fileUpload } from '../../helpers/fileUpload';
+
 
 const thunk = require('redux-thunk').thunk;
 //***************************/
@@ -30,8 +33,21 @@ const initState = {
     auth:{
         uid:'TestingUID',
         name:'Unknown'
+    },
+    notes:{
+        active:{
+            id:'qV3V7Z6Z6cEtWxOiwYOz',
+            title:'modificado',
+            body:'body modificado',
+            
+        }
     }
 }
+jest.mock('../../helpers/fileUpload',()=>({
+    fileUpload:jest.fn(()=>{
+        return  Promise.resolve('https://www.mockedweb.com/imageMocked.jpg')
+    })
+}))
 
 //Gracias a redux mock store podemos simular nuestro store de redux y middlewares
 let store = mockStore(initState)
@@ -51,10 +67,10 @@ describe('Tests in notes actions', () => {
 
     test('should create new note with startNewNote', async() => { 
        
-         //Al usar await se producía un error de ReferenceError: setImmediate is not defined
-         //Pero el registro en firebase se creaba correctamente 
-         //la configuración de beforeAll corrigió este error, pero al cambiar el entorno de pruebas a 'node'
-         //Ya no es necesaria la configuración dentro de beforeAll 
+        //  Al usar await se producía un error de ReferenceError: setImmediate is not defined
+        //  Pero el registro en firebase se creaba correctamente 
+        //  la configuración de beforeAll corrigió este error, pero al cambiar el entorno de pruebas a 'node'
+        //  Ya no es necesaria la configuración dentro de beforeAll 
            await store.dispatch(startNewNote());
            const actions = store.getActions();
            expect(actions[0]).toEqual({
@@ -79,7 +95,7 @@ describe('Tests in notes actions', () => {
             }
            })
 
-           //Eliminamos el registro  en la base de datos para pruebas, despues de hacer las comprobaciones
+        //    Eliminamos el registro  en la base de datos para pruebas, despues de hacer las comprobaciones
            const docId = actions[0].payload.id
            await db.doc(`TestingUID/journal/notes/${docId}`).delete();
                 
@@ -88,7 +104,7 @@ describe('Tests in notes actions', () => {
         
         
         
-        //TestingUID es el id de nuestra colección en firebase TestingUID/journal/notes/*
+        // TestingUID es el id de nuestra colección en firebase TestingUID/journal/notes/*
 
         await store.dispatch(startLoadingNotes('TestingUID'));
         const actions = store.getActions()
@@ -116,4 +132,10 @@ describe('Tests in notes actions', () => {
             
            
        })
+      
+       //TODO Requiere los entorno jsdom como node por igual, buscar la forma de que funcione
+//        test('should update url with startUploading', async() => { 
+//             const mockFile=new File([],'image.jpg');
+//             await store.dispatch(startUploading(mockFile)) 
+//         })
  })

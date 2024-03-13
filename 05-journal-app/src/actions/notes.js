@@ -64,13 +64,17 @@ export const startSaveNote = (note) =>{
         const noteToFirebase = {...note}
         delete  noteToFirebase.id; //No necesitamos ni debemos actualizar el id de la nota
         await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirebase)
-
-        //La actualización de los datos de la nota en la vista se hacen después de que se haya actualizado
-        //en la base de datos pero no haciendo una nueva petición(queda a discreción)
-        dispatch(refreshNoteById(note.id,noteToFirebase))
-        dispatch(activeNote(note.id,noteToFirebase))
-        //Mensaje nota gaurdada
-        Swal.fire("Successfull saved",note.title,'success');
+        try {
+            //La actualización de los datos de la nota en la vista se hacen después de que se haya actualizado
+            //en la base de datos pero no haciendo una nueva petición(queda a discreción)
+            dispatch(refreshNoteById(note.id,noteToFirebase))
+            dispatch(activeNote(note.id,noteToFirebase))
+            //Mensaje nota gaurdada
+            Swal.fire("Successfull saved",note.title,'success');
+            
+        } catch (error) {
+            console.log(error)
+        }
 
     }
 }
