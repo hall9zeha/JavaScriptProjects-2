@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import {Provider} from 'react-redux';
-import renderer from 'react-test-renderer';
+import renderer, {act}from 'react-test-renderer';
 import { LoginScreen } from '../../../components/auth/LoginScreen';
 import {MemoryRouter} from 'react-router-dom';
 
@@ -10,10 +10,7 @@ import configureStore from 'redux-mock-store'
 import { render, fireEvent } from "@testing-library/react";
 import { startLoginWithEmailPassword, startLoginWithGoogle } from '../../../actions/auth';
 
-jest.mock('../../../actions/auth',()=>({
-    startLoginWithGoogle:jest.fn(),
-    startLoginWithEmailPassword:jest.fn()
-}))
+
 
 const thunk = require('redux-thunk').thunk;
 //***************************/
@@ -30,6 +27,10 @@ const initState = {
 let store = mockStore(initState)
 //Para simular el dispatch y evaluar como son llamadas las funciones 
 store.dispatch=jest.fn()
+jest.mock('../../../actions/auth',()=>({
+    startLoginWithGoogle:jest.fn(),
+    startLoginWithEmailPassword:jest.fn()
+}))
 
 describe('Tests in <LoginScreen/> component', () => { 
     const wrapper=renderer.create(
