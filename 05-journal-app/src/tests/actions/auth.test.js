@@ -52,5 +52,12 @@ describe('Test in auth actions', () => {
             await store.dispatch(startLoginWithEmailPassword('test@mail.com','123456'));
             const actions = store.getActions()
             console.log(actions)
+            expect(actions[1]).toEqual({
+                type:types.login,
+                payload:{
+                    uid:'JoOIVACx7RggrwI4MRC40sKxVDx1',//poner el que tengas en tu usuario de prueba en firebase
+                    displayName:null
+                }
+            })
        })
  })
