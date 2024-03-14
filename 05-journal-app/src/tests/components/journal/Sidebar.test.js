@@ -3,23 +3,20 @@
  */
 import {Provider} from 'react-redux';
 import renderer ,{act}from 'react-test-renderer';
-import {MemoryRouter} from 'react-router-dom';
 
-import { AppRouter } from '../../routers/AppRouter';
+
 import configureStore from 'redux-mock-store'
-import { render, fireEvent } from "@testing-library/react";
-import { types } from '../../types/Types';
-import {firebase} from '../../firebase/firebaseConfig'
-import { Sidebar } from '../../components/journal/Sidebar';
-import { startNewNote } from '../../actions/notes';
-import { startLogout } from '../../actions/auth';
+
+import { Sidebar } from '../../../components/journal/Sidebar';
+import { startNewNote } from '../../../actions/notes';
+import { startLogout } from '../../../actions/auth';
 
 const thunk = require('redux-thunk').thunk;
 
-jest.mock('../../actions/auth',()=>({
+jest.mock('../../../actions/auth',()=>({
     startLogout:jest.fn()
 }))
-jest.mock('../../actions/notes',()=>({
+jest.mock('../../../actions/notes',()=>({
     startNewNote:jest.fn()
 }))
 
