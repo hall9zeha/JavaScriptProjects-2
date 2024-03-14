@@ -7,8 +7,13 @@ import { LoginScreen } from '../../../components/auth/LoginScreen';
 import {MemoryRouter} from 'react-router-dom';
 
 import configureStore from 'redux-mock-store'
+import { render, fireEvent } from "@testing-library/react";
+import { startLoginWithEmailPassword, startLoginWithGoogle } from '../../../actions/auth';
 
-
+jest.mock('../../../actions/auth',()=>({
+    startLoginWithGoogle:jest.fn(),
+    startLoginWithEmailPassword:jest.fn()
+}))
 
 const thunk = require('redux-thunk').thunk;
 //***************************/
@@ -23,20 +28,36 @@ const initState = {
     }
 }
 let store = mockStore(initState)
+//Para simular el dispatch y evaluar como son llamadas las funciones 
+store.dispatch=jest.fn()
 
 describe('Tests in <LoginScreen/> component', () => { 
+    const wrapper=renderer.create(
+        <Provider store={store}>
+            <MemoryRouter>
+                <LoginScreen/>
+            </MemoryRouter>
+        </Provider>)
 
     beforeEach(()=>{
         store=mockStore(initState)
+        jest.clearAllMocks();
     })
 
     test('should show successfully', () => { 
-        const wrapper=renderer.create(
-                <Provider store={store}>
-                    <MemoryRouter>
-                        <LoginScreen/>
-                    </MemoryRouter>
-                </Provider>)
+        
         expect(wrapper).toMatchSnapshot()
+    })
+    test('should fire the google login event', async () => { 
+        
+        const btnGoogle = await  wrapper.root.findByProps({className:'google-btn'});
+        btnGoogle.props.onClick()
+        expect(startLoginWithGoogle).toHaveBeenCalled()
+    })
+    test('should fire the login with email and password', async() => { 
+        const btnLoginEmailPassword = await wrapper.root.findByType('form');
+        
+        btnLoginEmailPassword.props.onSubmit({preventDefault:jest.fn()})
+        expect(startLoginWithEmailPassword).toHaveBeenCalledWith('martha@mail.com','123456')
     })
  })
