@@ -8,6 +8,7 @@ import 'moment/locale/es'//Cambia los nombres de mes,día a español
 import 'react-big-calendar/lib/css/react-big-calendar.css' //Estilos para big calendar
 import { messages } from '../helpers/calendar-translate-es'
 import { CalendarEvent } from './CalendarEvent'
+import { CalendarModal } from './CalendarModal'
 
 
 moment.locale('es')//Cambia los nombres de mes,día a español
@@ -72,6 +73,7 @@ export const CalendarScreen = () => {
             onView={onViewChange}
             view={lastView}
         />
+        <CalendarModal/>
     </div>
   )
 }
