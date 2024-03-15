@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Calendar,momentLocalizer} from 'react-big-calendar'
 import { Navbar } from '../ui/Navbar'
 import moment from 'moment'
@@ -7,6 +7,7 @@ import 'moment/locale/es'//Cambia los nombres de mes,día a español
 
 import 'react-big-calendar/lib/css/react-big-calendar.css' //Estilos para big calendar
 import { messages } from '../helpers/calendar-translate-es'
+import { CalendarEvent } from './CalendarEvent'
 
 
 moment.locale('es')//Cambia los nombres de mes,día a español
@@ -16,9 +17,29 @@ const events =[{
     title:'Cumpleaños de Martha',
     start:moment().toDate(),//como hacer new Date()
     end:moment().add(2,'hours').toDate(),//Agregamos dos horas despues de la fecha inicial
-    notes:'Comprar el pastel'
+    notes:'Comprar el pastel',
+    user:{
+        _id:123,
+        name:'Barry'
+    }
 }]
 export const CalendarScreen = () => {
+    //Como valor inicial de useState leemos local storage para ver si hay algo, sino ponemos por defecto month
+    const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'month')
+
+
+    const onDoubleClick = (e)=>{
+        
+    }
+    const onSelectEvent = (e)=>{
+        console.log(e)
+    }
+    const onViewChange = (e)=>{
+        setLastView(e)
+        //Guardamos en local storage la última vista(day,week,month) del calendario para que al recargar el mismo
+        //nos muestre esa pantalla
+        localStorage.setItem('lastView',e)
+    }
     const eventStyleGetter = (event,start,end,isSelected)=>{
         const style = {
             backgroundColor:'#367cf7',
@@ -41,6 +62,15 @@ export const CalendarScreen = () => {
             endAccessor="end"
             messages={messages} //Remover si se quiere el lenguaje por defecto Inglés o usar sus propias traducciones
             eventPropGetter={eventStyleGetter}
+            //Usamos components usar nuestro componente personalizado y mostrar la información 
+            //de cada evento en el calendario con nuestro propio diseño
+            components={{
+                event:CalendarEvent
+            }}
+            onDoubleclickEvent={onDoubleClick}
+            onSelectEvent={onSelectEvent}
+            onView={onViewChange}
+            view={lastView}
         />
     </div>
   )
