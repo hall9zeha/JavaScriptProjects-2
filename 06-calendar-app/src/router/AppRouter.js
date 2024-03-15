@@ -8,7 +8,7 @@ export const AppRouter = () => {
   return (
     <BrowserRouter>
         <Routes>
-             <Route 
+            <Route 
                 Component={LoginScreen}
                 exact path='/login'/>
             <Route
