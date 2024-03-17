@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import {Calendar,momentLocalizer} from 'react-big-calendar'
 import { Navbar } from '../ui/Navbar'
 import moment from 'moment'
+import { useDispatch } from 'react-redux'
+
 import 'moment/locale/es'//Cambia los nombres de mes,día a español
 
 
@@ -9,6 +11,8 @@ import 'react-big-calendar/lib/css/react-big-calendar.css' //Estilos para big ca
 import { messages } from '../helpers/calendar-translate-es'
 import { CalendarEvent } from './CalendarEvent'
 import { CalendarModal } from './CalendarModal'
+import { uiOpenModal } from '../actions/ui'
+
 
 
 moment.locale('es')//Cambia los nombres de mes,día a español
@@ -25,12 +29,14 @@ const events =[{
     }
 }]
 export const CalendarScreen = () => {
+
+    const dispatch = useDispatch()
+
     //Como valor inicial de useState leemos local storage para ver si hay algo, sino ponemos por defecto month
     const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'month')
 
-
     const onDoubleClick = (e)=>{
-        
+          dispatch(uiOpenModal())
     }
     const onSelectEvent = (e)=>{
         console.log(e)
@@ -68,7 +74,7 @@ export const CalendarScreen = () => {
             components={{
                 event:CalendarEvent
             }}
-            onDoubleclickEvent={onDoubleClick}
+            onDoubleClickEvent={onDoubleClick}
             onSelectEvent={onSelectEvent}
             onView={onViewChange}
             view={lastView}

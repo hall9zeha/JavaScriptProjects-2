@@ -7,6 +7,9 @@ import 'react-clock/dist/Clock.css';
 import Modal from 'react-modal'
 import DateTimePicker from 'react-datetime-picker';
 import Swal from 'sweetalert2';
+import { useDispatch, useSelector } from 'react-redux';
+import { uiCloseModal } from '../actions/ui';
+
 
 
 const customStyles = {
@@ -26,9 +29,15 @@ const nowDatePlus = nowDate.clone().add(1,'hours')
 
 
 export const CalendarModal = () => {
+
+  const dispatch = useDispatch();
+  // Obtenemos el estado de redux para nuestro modal form que está en ui
+  const {modalOpen} = useSelector(state=> state.ui);
+  
   const [dateStart, setDateStart] = useState(nowDate.toDate())
   const [dateEnd, setDateEnd] = useState(nowDatePlus.toDate())
   const [titleValid, setTitleValid] = useState(true)
+
   
   const [formValues, setFormValues] = useState({
     title:'Event',
@@ -46,7 +55,7 @@ export const CalendarModal = () => {
   }
 
   const closeModal = ()=>{
-       
+       dispatch(uiCloseModal());
     }
     //Al escoger una fecha en el datepicker la capturamos con esta función
     const handleStartDateChange = (e)=>{
@@ -81,7 +90,7 @@ export const CalendarModal = () => {
 
   return (
     <Modal
-        isOpen={true}
+        isOpen={modalOpen}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
