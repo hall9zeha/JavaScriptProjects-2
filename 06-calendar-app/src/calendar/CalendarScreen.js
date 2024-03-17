@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {Calendar,momentLocalizer} from 'react-big-calendar'
 import { Navbar } from '../ui/Navbar'
 import moment from 'moment'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import 'moment/locale/es'//Cambia los nombres de mes,día a español
 
@@ -20,18 +20,10 @@ import { AddNewFab } from '../ui/AddNewFab'
 moment.locale('es')//Cambia los nombres de mes,día a español
 
 const localizer = momentLocalizer(moment)
-const events =[{
-    title:'Cumpleaños de Martha',
-    start:moment().toDate(),//como hacer new Date()
-    end:moment().add(2,'hours').toDate(),//Agregamos dos horas despues de la fecha inicial
-    notes:'Comprar el pastel',
-    user:{
-        _id:123,
-        name:'Barry'
-    }
-}]
+
 export const CalendarScreen = () => {
 
+    const {events} = useSelector(state=>state.calendar)
     const dispatch = useDispatch()
 
     //Como valor inicial de useState leemos local storage para ver si hay algo, sino ponemos por defecto month
@@ -43,7 +35,7 @@ export const CalendarScreen = () => {
     const onSelectEvent = (e)=>{
         
         dispatch(eventSetActive(e))
-        dispatch(uiOpenModal())
+        
     }
     const onViewChange = (e)=>{
         setLastView(e)

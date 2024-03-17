@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-calendar/dist/Calendar.css';
@@ -9,7 +9,7 @@ import DateTimePicker from 'react-datetime-picker';
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 import { uiCloseModal } from '../actions/ui';
-import { eventAddNew } from '../actions/events';
+import { eventAddNew, eventClearActiveEvent } from '../actions/events';
 
 
 
@@ -28,25 +28,34 @@ Modal.setAppElement('#root');
 const nowDate =  moment().minutes(0).seconds(0).add(1,'hours')
 const nowDatePlus = nowDate.clone().add(1,'hours')
 
-
+const initEvent={
+  title:'',
+  notes:'',
+  start:nowDate.toDate(),
+  end:nowDatePlus.toDate()
+}
 export const CalendarModal = () => {
 
   const dispatch = useDispatch();
   // Obtenemos el estado de redux para nuestro modal form que está en ui
   const {modalOpen} = useSelector(state=> state.ui);
+  const {activeEvent} = useSelector(state=> state.calendar);
   
   const [dateStart, setDateStart] = useState(nowDate.toDate())
   const [dateEnd, setDateEnd] = useState(nowDatePlus.toDate())
   const [titleValid, setTitleValid] = useState(true)
 
   
-  const [formValues, setFormValues] = useState({
-    title:'Event',
-    notes:'',
-    start:nowDate.toDate(),
-    end:nowDatePlus.toDate()
-  })
+  const [formValues, setFormValues] = useState(initEvent)
   const {notes,title, start,end} = formValues;
+  
+  useEffect(()=>{
+    //Ya que la primera vez el objeto activeEvent es nulo
+    //debemos controlar que solo se envíe si existe
+    if(activeEvent){
+      setFormValues(activeEvent)
+    }
+  },[activeEvent,setFormValues])
 
   const handleInputchange = ({target})=>{
     setFormValues({
@@ -57,6 +66,9 @@ export const CalendarModal = () => {
 
   const closeModal = ()=>{
        dispatch(uiCloseModal());
+       dispatch(eventClearActiveEvent())
+       setFormValues(initEvent)
+
     }
     //Al escoger una fecha en el datepicker la capturamos con esta función
     const handleStartDateChange = (e)=>{
