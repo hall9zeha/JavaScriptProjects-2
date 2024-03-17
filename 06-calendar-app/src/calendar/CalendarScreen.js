@@ -12,6 +12,7 @@ import { messages } from '../helpers/calendar-translate-es'
 import { CalendarEvent } from './CalendarEvent'
 import { CalendarModal } from './CalendarModal'
 import { uiOpenModal } from '../actions/ui'
+import { eventSetActive } from '../actions/events'
 
 
 
@@ -39,7 +40,8 @@ export const CalendarScreen = () => {
           dispatch(uiOpenModal())
     }
     const onSelectEvent = (e)=>{
-        console.log(e)
+        
+        dispatch(eventSetActive(e))
     }
     const onViewChange = (e)=>{
         setLastView(e)
