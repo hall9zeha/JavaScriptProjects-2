@@ -54,6 +54,8 @@ export const CalendarModal = () => {
     //debemos controlar que solo se envíe si existe
     if(activeEvent){
       setFormValues(activeEvent)
+    }else{
+      setFormValues(initEvent)
     }
   },[activeEvent,setFormValues])
 
@@ -125,7 +127,7 @@ export const CalendarModal = () => {
         overlayClassName='modal-fondo'
         closeTimeoutMS={200}
         >
-        <h1> Nuevo evento </h1>
+        <h1> {(activeEvent) ? 'Editar evento' : 'Nuevo evento'} </h1>
         <hr />
         <form className="container"
               onSubmit={handleSubmitForm}

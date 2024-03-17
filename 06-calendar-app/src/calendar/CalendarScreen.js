@@ -12,8 +12,9 @@ import { messages } from '../helpers/calendar-translate-es'
 import { CalendarEvent } from './CalendarEvent'
 import { CalendarModal } from './CalendarModal'
 import { uiOpenModal } from '../actions/ui'
-import { eventSetActive } from '../actions/events'
+import { eventClearActiveEvent, eventSetActive } from '../actions/events'
 import { AddNewFab } from '../ui/AddNewFab'
+import { DeleteEventFab } from '../ui/DeleteEventFab'
 
 
 
@@ -23,7 +24,7 @@ const localizer = momentLocalizer(moment)
 
 export const CalendarScreen = () => {
 
-    const {events} = useSelector(state=>state.calendar)
+    const {events, activeEvent} = useSelector(state=>state.calendar)
     const dispatch = useDispatch()
 
     //Como valor inicial de useState leemos local storage para ver si hay algo, sino ponemos por defecto month
@@ -36,6 +37,9 @@ export const CalendarScreen = () => {
         
         dispatch(eventSetActive(e))
         
+    }
+    const onSelectSlot =()=>{
+        dispatch(eventClearActiveEvent())
     }
     const onViewChange = (e)=>{
         setLastView(e)
@@ -72,10 +76,14 @@ export const CalendarScreen = () => {
             }}
             onDoubleClickEvent={onDoubleClick}
             onSelectEvent={onSelectEvent}
+            onSelectSlot={onSelectSlot}
+            selectable={true}
             onView={onViewChange}
             view={lastView}
+
         />
         <AddNewFab/>
+        {activeEvent &&  <DeleteEventFab/>}
         <CalendarModal/>
     </div>
   )
