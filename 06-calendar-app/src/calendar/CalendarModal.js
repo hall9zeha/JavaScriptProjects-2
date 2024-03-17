@@ -9,7 +9,7 @@ import DateTimePicker from 'react-datetime-picker';
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
 import { uiCloseModal } from '../actions/ui';
-import { eventAddNew, eventClearActiveEvent } from '../actions/events';
+import { eventAddNew, eventClearActiveEvent, eventUpdated } from '../actions/events';
 
 
 
@@ -97,14 +97,20 @@ export const CalendarModal = () => {
       if(title.trim().length <2){
         return setTitleValid(false)
       }
-      dispatch(eventAddNew({
-        ...formValues,
-        id:new Date().getTime(),
-        user:{
-          _id:123,
-          name:'Barry'
-        }
-      }))
+      
+      if(activeEvent){
+        dispatch(eventUpdated(formValues))
+      }else{
+
+        dispatch(eventAddNew({
+          ...formValues,
+          id:new Date().getTime(),
+          user:{
+            _id:123,
+            name:'Barry'
+          }
+        }))
+      }
       setTitleValid(true)
       closeModal()
     }
@@ -129,7 +135,7 @@ export const CalendarModal = () => {
                 <label>Fecha y hora inicio</label>
                 <DateTimePicker
                     onChange={handleStartDateChange}
-                    value={dateStart}
+                    value={activeEvent ? activeEvent.start : dateStart}
                     className='form-control'/>
             </div>
 
@@ -137,7 +143,7 @@ export const CalendarModal = () => {
                 <label>Fecha y hora fin</label>
                 <DateTimePicker
                     onChange={handleEndDateChange}
-                    value={dateEnd}
+                    value={activeEvent ? activeEvent.end: dateEnd}
                     //La fecha inicial no debe ser mayor que dateEnd, lo validamos con minDate 
                     minDate={dateStart}
                     className='form-control'/>
