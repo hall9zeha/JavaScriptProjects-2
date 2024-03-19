@@ -1,4 +1,7 @@
 const express = require('express');
+require ('dotenv').config();
+
+
 console.log("Hola world")
 
 //Create express server
@@ -10,14 +13,12 @@ app.use(express.static('public')) //El use es un middleware que se ejecuta cuand
 
 
 //Routes
-// app.get('/',(req,res)=>{
-//     res.json({
-//         ok:true
-//     })
-// })
 
+//api/auth -> es la ruta que (puede ser cualquiera que se nos ocurra)  contendrá todo 
+//lo que se exporte desde ./routes/auth que sí es una ruta real en nuestra estructura de backend
+app.use('/api/auth', require('./routes/auth'));
 
 //Listen requests
-app.listen(4001,()=>{
+app.listen(process.env.PORT,()=>{
     console.log("Server is running")
 })
