@@ -1,6 +1,7 @@
 const express = require('express');
 require ('dotenv').config();
 const cors = require("cors");
+const { dbconnection } = require('./middlewares/database/config');
 
 
 
@@ -11,6 +12,10 @@ const app = express();
 // app.use(express.urlencoded({ extended: true }));
 // app.use(cors("*")) 
 //Public directory
+
+//Database
+dbconnection()
+
 app.use(express.static('public')) //El use es un middleware que se ejecuta cuando alguien hace una petición al servidor
 
 //Read and parse body
