@@ -1,17 +1,21 @@
 const express = require('express');
 require ('dotenv').config();
+const cors = require("cors");
+
 
 
 console.log("Hola world")
 
 //Create express server
 const app = express();
-
-
+// app.use(express.urlencoded({ extended: true }));
+// app.use(cors("*")) 
 //Public directory
 app.use(express.static('public')) //El use es un middleware que se ejecuta cuando alguien hace una petición al servidor
 
-
+//Read and parse body
+app.use(express.json());
+ 
 //Routes
 
 //api/auth -> es la ruta que (puede ser cualquiera que se nos ocurra)  contendrá todo 
