@@ -1,3 +1,4 @@
+const { generateJWT } = require("../helpers/jwt");
 const User = require("../models/User");
 const bcrypt = require('bcryptjs')
 
@@ -20,6 +21,10 @@ const createUser = async(req,res)=>{
         
         user = new User(req.body)
 
+        //Generate token
+        const token = await generateJWT(user.id,user.name);
+
+
         //Password encrypt
         const salt = bcrypt.genSaltSync();
         user.password = bcrypt.hashSync(password,salt);
@@ -30,7 +35,8 @@ const createUser = async(req,res)=>{
         res.status(201).json({
             ok:true,
             uid:user.id,
-            name:user.name
+            name:user.name,
+            token
            
         })
         
@@ -45,7 +51,7 @@ const createUser = async(req,res)=>{
 }
 
 const login = async(req,res)=>{
-    
+
     const {email,password} = req.body;
     
     try {
@@ -67,10 +73,15 @@ const login = async(req,res)=>{
             })
           }
 
+          //Generate token
+        const token = await generateJWT(user.id,user.name);
+
+
           res.status(200).json({
             ok:true,
             uid:user.id,
-            name:user.name
+            name:user.name,
+            token
           })
 
     } catch (error) {
