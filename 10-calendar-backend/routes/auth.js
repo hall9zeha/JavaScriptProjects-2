@@ -10,6 +10,7 @@ const {check} = require('express-validator')
 
 const {createUser, login,renewToken} = require('../controllers/auth');
 const { fieldValidate } = require('../middlewares/field-validators');
+const { validateJWT } = require('../middlewares/jws-validator');
 
 router.post('/new',
     //Midlewares para validar los campos necesarios, comenzamos a hacerlos aquí y los recibimos en nuestros controllers
@@ -28,6 +29,7 @@ router.post('/',
         fieldValidate
     ],
     login)
-router.get('/renew',renewToken)
+    // Validamos el json web token con vlidateJWT 
+router.get('/renew',validateJWT, renewToken)
 
 module.exports = router;
