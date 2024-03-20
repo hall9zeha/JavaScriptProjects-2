@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const bcrypt = require('bcryptjs')
 
 const createUser = async(req,res)=>{
 
@@ -18,6 +19,10 @@ const createUser = async(req,res)=>{
         }
         
         user = new User(req.body)
+
+        //Password encrypt
+        const salt = bcrypt.genSaltSync();
+        user.password = bcrypt.hashSync(password,salt);
 
         //Creamos un registro con un usuario usando mongoose
         await user.save();
