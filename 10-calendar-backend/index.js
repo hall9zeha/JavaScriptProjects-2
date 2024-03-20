@@ -9,8 +9,11 @@ console.log("Hola world")
 
 //Create express server
 const app = express();
+
+// Cors
+
 // app.use(express.urlencoded({ extended: true }));
-// app.use(cors("*")) 
+app.use(cors("*")) 
 //Public directory
 
 //Database
