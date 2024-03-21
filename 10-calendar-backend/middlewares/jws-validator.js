@@ -7,7 +7,7 @@ const validateJWT=(req, res,next)=>{
     if(!token){
         return res.status(401).json({
             ok:false,
-            msg:'There is no token'
+            msg:'There is no token, token is required'
         })
     }
 
