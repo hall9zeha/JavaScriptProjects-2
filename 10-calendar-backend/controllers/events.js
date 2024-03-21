@@ -9,9 +9,12 @@ const getEvents = (req, res)=>{
 
 //Create event
 const createEvent = (req,res)=>{
+    const {title, start, end} = req.body;
     res.status(201).json({
         ok:true,
         msg:"Evento creado"
+        
+
     })
 }
 
