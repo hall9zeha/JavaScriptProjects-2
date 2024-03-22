@@ -13,7 +13,11 @@ export const authReducer = (state = initialState, action)=>{
                 checking:false,
                 ...action.payload
             }
-    
+        // case types.authStartRegister:
+        //     return{
+        //         ...state,
+
+        //     }
         default:
             return state;
     }
