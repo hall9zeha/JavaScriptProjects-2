@@ -28,11 +28,12 @@ export const AppRouter = () => {
         <Routes>
           <Route path='/login'
             element={
+              //!!uid convertirá esa variable de cadena en un boleano si existe devolverá true
               <PublicRoute isAuthenticated={!!uid}>
                 <LoginScreen/>
               </PublicRoute>
             }
-          />
+            />
             
             <Route path='/'
               element={
