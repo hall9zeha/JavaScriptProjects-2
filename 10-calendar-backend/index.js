@@ -33,5 +33,5 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/events', require('./routes/events'));
 //Listen requests
 app.listen(process.env.PORT,()=>{
-    console.log("Server is running")
+    console.log(`Server is running in port: ${process.env.PORT}`)
 })

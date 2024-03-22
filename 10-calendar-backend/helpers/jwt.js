@@ -7,7 +7,9 @@ const generateJWT = (uid,name)=>{
         const payload = {uid,name};
         //Firmamos nuestro token con una palabra o frase clave
         jwt.sign(payload,process.env.SECRET_JWT_SEED,{
-            expiresIn:'2h'//El token creado expirará en 2 horas, podemos aumentar el tiempo a días, etc
+            //El token creado expirará en 2 horas, podemos aumentar el tiempo a días eg: '1d', '2 days', etc
+            //ver documentación de jsonwebtoken
+            expiresIn:'2h'
         },(err, token)=>{
             if(err){
                 reject("Can't tokn resolve")
