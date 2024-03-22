@@ -3,30 +3,50 @@ import {BrowserRouter , Navigate, Route, Router, Routes} from 'react-router-dom'
 import { LoginScreen } from '../auth/LoginScreen'
 
 import { CalendarScreen } from '../calendar/CalendarScreen'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { startChecking } from '../actions/auth'
+import { PublicRoute } from './PublicRoute'
+import { PrivateRoute } from './PrivateRoute'
 
 export const AppRouter = () => {
-
+  
+  
   const dispatch = useDispatch();
+  const {checking,uid} = useSelector(state=>state.auth);
+
   useEffect(() => {
     dispatch(startChecking());
     
   }, [dispatch])
+
+  if(checking){
+    return (<h5>Prease wait...</h5>)
+  }
   
   return (
     <BrowserRouter>
         <Routes>
-            <Route 
-                Component={LoginScreen}
-                exact path='/login'/>
-            <Route
-                Component={CalendarScreen}
-                exact path='/calendar'/>
-            <Route 
-                path='*' element={<Navigate to = "/calendar"/>}
+          <Route path='/login'
+            element={
+              <PublicRoute isAuthenticated={!!uid}>
+                <LoginScreen/>
+              </PublicRoute>
+            }
+          />
+            
+            <Route path='/'
+              element={
+                <PrivateRoute isAuthenticated={!!uid} >
+                  <CalendarScreen/>
+                </PrivateRoute>
+              }
             />
-           </Routes>
+
+          
+            <Route 
+                path='*' element={<Navigate to = "/"/>}
+            />
+            </Routes>
     </BrowserRouter>
   )
 }
