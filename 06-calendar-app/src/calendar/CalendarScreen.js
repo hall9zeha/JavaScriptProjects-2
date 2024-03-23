@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {Calendar,momentLocalizer} from 'react-big-calendar'
 import { Navbar } from '../ui/Navbar'
 import moment from 'moment'
@@ -12,7 +12,7 @@ import { messages } from '../helpers/calendar-translate-es'
 import { CalendarEvent } from './CalendarEvent'
 import { CalendarModal } from './CalendarModal'
 import { uiOpenModal } from '../actions/ui'
-import { eventClearActiveEvent, eventSetActive } from '../actions/events'
+import { eventClearActiveEvent, eventSetActive, eventStartLoading } from '../actions/events'
 import { AddNewFab } from '../ui/AddNewFab'
 import { DeleteEventFab } from '../ui/DeleteEventFab'
 
@@ -29,6 +29,13 @@ export const CalendarScreen = () => {
 
     //Como valor inicial de useState leemos local storage para ver si hay algo, sino ponemos por defecto month
     const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'month')
+
+    //Cargamos todos los registros de la base de datos 
+    useEffect(() => {
+      dispatch(eventStartLoading());
+    
+    }, [dispatch])
+    
 
     const onDoubleClick = (e)=>{
           dispatch(uiOpenModal())
