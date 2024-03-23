@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import { fetchWithToken, fetchWithoutToken } from "../helpers/fetch"
 import { types } from "../types/types";
+import { eventLogout } from "./events";
 
 export const startLogin = (email, password) =>{
     //Gracias a la librería thunk podemos disponer de un dispatch
@@ -81,6 +82,7 @@ const login = (user) =>({
 export const startLogout =()=>{
     return (dispatch)=>{
         localStorage.clear();
+        dispatch(eventLogout())
         dispatch(logout());
     }
 }
