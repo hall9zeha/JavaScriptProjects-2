@@ -112,14 +112,14 @@ const deleteEvent = async(req,res)=>{
  
          res.json({
              ok:true,
-             eventUpdated
+             eventDeleted
          })
  
      } catch (error) {
          console.log(error);
          res.status(500).json({
              ok:false,
-             msg:'Error updating event'
+             msg:'Error delete event'
          })
      }
     
