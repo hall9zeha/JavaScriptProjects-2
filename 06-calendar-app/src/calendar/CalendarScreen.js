@@ -25,6 +25,7 @@ const localizer = momentLocalizer(moment)
 export const CalendarScreen = () => {
 
     const {events, activeEvent} = useSelector(state=>state.calendar)
+    const {uid} = useSelector(state=>state.auth)
     const dispatch = useDispatch()
 
     //Como valor inicial de useState leemos local storage para ver si hay algo, sino ponemos por defecto month
@@ -56,7 +57,7 @@ export const CalendarScreen = () => {
     }
     const eventStyleGetter = (event,start,end,isSelected)=>{
         const style = {
-            backgroundColor:'#367cf7',
+            backgroundColor:(uid === event.user._id) ? '#367cf7' : '#465660',
             borderRadius:'0px',
             opacity:0.8,
             display:'block',
