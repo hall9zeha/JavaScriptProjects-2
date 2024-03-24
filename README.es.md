@@ -2,7 +2,7 @@
 
 Un Conjunto de aplicaciones escritos en java script usando React, node js, firebase, mongo db, redux y  tests con React Test Library 
 
-[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/hall9zeha/JavaScriptProjecs-2/blob/main/README.md)
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/hall9zeha/JavaScriptProjects-2/blob/main/README.md)
 
 ## Programas y entornos de desarrollo utilizados :wrench:
 
@@ -43,7 +43,7 @@ Incluye correctamente React en modo de producción y optimiza la compilación pa
 
 Los proyectos 02-gif-expert-app, 05-journal-app, 06-calendar-app y 07-calendar-backend tienen su propio archivo README que explica puntos importantes para su correcta implementación.
 
-## Vistas previas
+# Vistas previas :rocket:
 
 * [Heroes App]() :rocket:
 * [Gif App]() :rocket:
