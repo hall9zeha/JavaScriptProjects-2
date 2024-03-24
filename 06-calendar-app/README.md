@@ -1,6 +1,6 @@
 # Mern Calendar App Frontend
 
-Aplicación para crear eventos en un calendario enlazada a una base de datos en mongo db atlas. Esta aplicación contiene toda la programación de frontend para calendar App, escrita en Java Script usando el patrón de arquitectura de datos [Redux](https://redux.js.org/).
+Aplicación para crear eventos en un calendario enlazada a una base de datos en mongo db atlas. Esta aplicación contiene toda la programación de frontend para calendar App, escrita en Java Script usando el patrón de arquitectura de datos [Redux](https://redux.js.org/) y el stack MERN(MongoDB, React JS, Express JS y Node JS )
 
 ## Características:
 CRUD completo
