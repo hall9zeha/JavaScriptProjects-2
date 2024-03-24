@@ -2,7 +2,9 @@
 
 Un Conjunto de aplicaciones escritos en java script usando React, node js, firebase, mongo db, redux y  tests con React Test Library 
 
-## Programas y entornos de desarrollo utilizados
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/hall9zeha/JavaScriptProjecs-2/blob/main/README.md)
+
+## Programas y entornos de desarrollo utilizados :wrench:
 
 * [Visual Studio code](https://code.visualstudio.com/)
 * [Node.js](https://nodejs.org/en) v20.10
@@ -13,6 +15,7 @@ Un Conjunto de aplicaciones escritos en java script usando React, node js, fireb
 * [Sass](https://sass-lang.com/) (en 05-journal-app)
 * [Mongo atlas](https://www.mongodb.com/es/cloud/atlas/lp/try4) (Para el proyecto de backend)
 * [Firebase](https://firebase.google.com/) (en 05-journal-app)
+* [Render](https://render.com/) (Para el despliegue de nuestras apis y aplicaciones web)
 
 ## Scripts disponibles
 
@@ -35,3 +38,13 @@ Consulte la sección sobre [ejecución de pruebas](https://facebook.github.io/cr
 
 Crea la aplicación para producción en la carpeta `build`.
 Incluye correctamente React en modo de producción y optimiza la compilación para obtener el mejor rendimiento.
+
+## Miscelánea
+
+Los proyectos 02-gif-expert-app, 05-journal-app, 06-calendar-app y 07-calendar-backend tienen su propio archivo README que explica puntos importantes para su correcta implementación.
+
+## Vistas previas
+
+* [Heroes App]() :rocket:
+* [Gif App]() :rocket:
+* [Calendar App]() :rocket:

@@ -2,7 +2,9 @@
 
 A Set of applications written in java script using React, node js, firebase, mongo db, redux and tests with React Test Library
 
-## Software and frameworks used
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/hall9zeha/JavaScriptProjects-2/blob/main/README.md) [![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/hall9zeha/JavaScriptProjects-2/blob/main/README.es.md)
+
+## Software and frameworks used :wrench:
 
 * [Visual Studio code](https://code.visualstudio.com/)
 * [Node.js](https://nodejs.org/en) v20.10
@@ -13,6 +15,7 @@ A Set of applications written in java script using React, node js, firebase, mon
 * [Sass](https://sass-lang.com/) (in 05-journal-app)
 * [Mongo atlas](https://www.mongodb.com/es/cloud/atlas/lp/try4) (For backend project)
 * [Firebase](https://firebase.google.com/) (in 05-journal-app)
+* [Render](https://render.com/) (For  backend and frontend deployment)
 
 ## Available Scripts
 
@@ -36,3 +39,11 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
+## Misc
+The projects 02-gif-expert-app, 05-journal-app, 06-calendar-app y 07-calendar-backend they have their own README file that explains important points for their correct implementation.
+
+## Previews
+
+* [Heroes App]() :rocket:
+* [Gif App]() :rocket:
+* [Calendar App]() :rocket:
