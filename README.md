@@ -49,7 +49,7 @@ Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 ## Misc
-The projects 02-gif-expert-app, 05-journal-app, 06-calendar-app y 07-calendar-backend they have their own README file that explains important points for their correct implementation.
+The projects ```02-gif-expert-app```, ```05-journal-app```, ```06-calendar-app``` y ```07-calendar-backend```they have their own README file that explains important points for their correct implementation.
 
 # Previews :rocket:
 

@@ -50,7 +50,7 @@ Incluye correctamente React en modo de producción y optimiza la compilación pa
 
 ## Miscelánea
 
-Los proyectos 02-gif-expert-app, 05-journal-app, 06-calendar-app y 07-calendar-backend tienen su propio archivo README que explica puntos importantes para su correcta implementación.
+Los proyectos ```02-gif-expert-app```, ```05-journal-app```, ```06-calendar-app``` y ```07-calendar-backend``` tienen su propio archivo README que explica puntos importantes para su correcta implementación.
 
 # Vistas previas :rocket:
 
