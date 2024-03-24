@@ -120,6 +120,7 @@ Los siguientes pasos se deben realizar para el funcionamiento correcto de la apl
 
  ### Localmente modo desarrollo:
 
+Desde el directorio raíz del proyecto ejecutar el comando ```npm install``` para reconstruir las dependencias. 
 Una vez creadas las variables de entorno lanzar la aplicación con el comando ```npm run dev```, cualquier cambio que se realice en el código se refrescará automáticamente.
 
 La aplicación debe estar ejecutándose para poder hacer las peticiones a la base de datos a través de nuestra api. 
