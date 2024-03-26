@@ -3,9 +3,6 @@ import 'firebase/compat/firestore'
 import 'firebase/compat/auth'
 
 
-// Usar su propia configuración que proporciona  firebase console una vez registrada la app.
-// Esta configuración no servirá porque la base de datos a la que hace referencia
-// será desabilitada por el desarrollador una vez el proyecto sea finalizado
 const firebaseConfig = {
     apiKey:process.env.REACT_APP_API_KEY ,
     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -24,11 +21,7 @@ const firebaseConfig = {
 
 
 const db = firebase.firestore();
-// db.disableNetwork().then(() => {
-//   console.log("La persistencia de datos se ha deshabilitado correctamente.");
-// }).catch((error) => {
-//   console.error("Error al deshabilitar la persistencia de datos:", error);
-// });
+
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 export {

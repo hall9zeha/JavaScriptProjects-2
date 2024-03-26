@@ -29,27 +29,28 @@ Los siguientes pasos se deben realizar para el funcionamiento correcto de la apl
    mongodb+srv://you_user_name:your_password@cluster0.sw5of57.mongodb.net/
    
    ```
-   Puede ver el siguiente [artículo](https://medium.com/@sergio13prez/connecting-to-mongodb-atlas-d1381f184369) que ilustra la forma de conseguir la url de conexión
+   Puede ver el siguiente [artículo](https://medium.com/@sergio13prez/connecting-to-mongodb-atlas-d1381f184369) que ilustra la forma de relaizar una conexión con mongo atlas.
 
    La url anterior puede agregarse a la aplicación [MongoDB Compass](https://www.mongodb.com/es/products/tools/compass) para tener el control de su base de datos desde el escritorio, o si prefiere puede manejarlo desde el navegador.
    
    Pero sin duda la url obtenida del cluster debe de agregarse a las variables de entorno en el paso 2
-   Asegúrese de agregar su dirección ip en la sección de ```Security/Network Acces``` de su cuenta en mongo atlas ```Add current ip```,si tiene direcciones ip dinámicas y no quiere agregarlas cada vez que quiera usar mongo atlas, agrege la ip ```0.0.0.0``` que le permitirá conectarse desde cualquier dirección.
+   Asegúrese de agregar su dirección ip en la sección de ```Security/Network Access``` de su cuenta en mongo atlas ```Add current ip```,si tiene direcciones ip dinámicas y no quiere agregarlas cada vez que quiera usar mongo atlas, agrege la ip ```0.0.0.0``` que le permitirá conectarse desde cualquier dirección.
    
 ### 2 - Configurar variables de entorno
 
  Crear un archivo para las variables de entorno nombrado como ```.env``` en la raíz del proyecto al mismo nivel que el archivo package.json, este archivo debe contener lo siguiente:
  ```javascript
-    #Tu puerto para el servidor en modo de desarrollo, puedes dejarlo como está
+    
     PORT=4001 
-
-    #Reemplazar con tu cadena de conexión a la base de datos creada en mongo atlas 
-    DB_CNN=mongodb+srv://you_user_name:your_password@cluster0.sw5of57.mongodb.net/mern_calendar.
-
+    DB_CNN=You_mongo_db_atlas_connection_cluster
     SECRET_JWT_SEED=You_secret_phrase_or_word
  
  ```
-   Donde ```mern_calendar``` es el nombre que se le dará a la base de datos cuando hagamos nuestros primeros registros, puede nombrarlo como desee.
+   - ```PORT```El puerto configurado para el proyecto es 4001 puede cambiarlo si desea.
+   - ```DB_CNN``` Reemplazar con tu cadena de conexión a la base de datos creada en mongo atlas Eg:
+    ```mongodb+srv://you_user_name:your_password@cluster0.sw5of57.mongodb.net/mern_calendar``` 
+      - Donde ```mern_calendar``` es el nombre que se le dará a la colección en la base de datos cuando
+      hagamos nuestros primeros registros, puede nombrarlo como desee.
 
  ## Acciones de la API
  Usando [Postman](https://www.postman.com/) Eg:</br>
