@@ -6,7 +6,11 @@ import renderer ,{act}from 'react-test-renderer';
 
 import configureStore from 'redux-mock-store'
 import { DeleteEventFab } from '../../../components/ui/DeleteEventFab';
+import { eventStartDelete } from '../../../actions/events';
 
+jest.mock('../../../actions/events',()=>({
+    eventStartDelete:jest.fn()
+}))
 
 const thunk = require('redux-thunk').thunk;
 
@@ -32,4 +36,9 @@ describe('Tests in <DeleteEventFab/> component', () => {
     test('should to match with snapshot', () => { 
         expect(wrapper).toMatchSnapshot()
      })
+     test('should call to eventstartDelete when clicked button', () => { 
+        const btnDel= wrapper.root.findByType('button');
+        btnDel.props.onClick();
+        expect(eventStartDelete).toHaveBeenCalled()
+      })
 })
