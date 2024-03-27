@@ -24,7 +24,10 @@ const customStyles = {
     },
   };
 
-Modal.setAppElement('#root');
+//Si no se ejecuta un entorno de pruebas entonces configurar normalmente
+if(process.env.NODE_ENV !=='test'){
+  Modal.setAppElement('#root');
+}
 const nowDate =  moment().minutes(0).seconds(0).add(1,'hours')
 const nowDatePlus = nowDate.clone().add(1,'hours')
 
