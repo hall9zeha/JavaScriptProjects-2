@@ -26,7 +26,9 @@ export const AppRouter = () => {
   return (
     <BrowserRouter>
         <Routes>
-          <Route path='/login'
+          <Route 
+            exact
+            path='/login'
             element={
               //!!uid convertirá esa variable de cadena en un boleano si existe devolverá true
               <PublicRoute isAuthenticated={!!uid}>
@@ -35,7 +37,9 @@ export const AppRouter = () => {
             }
             />
             
-            <Route path='/'
+            <Route 
+              exact
+              path='/'
               element={
                 <PrivateRoute isAuthenticated={!!uid} >
                   <CalendarScreen/>

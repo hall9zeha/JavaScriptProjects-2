@@ -5,3 +5,5 @@ exports[`Test in <AppRouter/> component should show Prease wait... 1`] = `
   Prease wait...
 </h5>
 `;
+
+exports[`Test in <AppRouter/> component should show public route 1`] = `null`;

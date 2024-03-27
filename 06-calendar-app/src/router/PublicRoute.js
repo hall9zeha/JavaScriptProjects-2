@@ -6,6 +6,6 @@ import PropTypes from 'prop-types'
 
 export const PublicRoute = ({children,isAuthenticated}) => {
 
-  return isAuthenticated ?  <Navigate to="/"/> :children 
+  return isAuthenticated ?  <Navigate to="/"/> :<>{children}</> 
 }
 
