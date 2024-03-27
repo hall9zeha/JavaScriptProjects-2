@@ -1,6 +1,8 @@
 import { fetchWithToken } from "../../helpers/fetch"
 
 describe('Tests in helpers', () => { 
+    //Obtenemos el token para las demás pruebas
+    let token ='';
 
     test('fetchWithoutToken should execute successfully', async() => { 
         //Usar su propio usuario registrado en su base de datos
@@ -9,7 +11,21 @@ describe('Tests in helpers', () => {
 
         const body = await response.json();
         expect(body.ok).toBe(true);
+        token = body.token;
 
+     }) 
+
+     test('fetchWithToken should execute successfully', async() => { 
+        localStorage.setItem('token',token);
+
+        //El id '65fc6249422350c575ebc9a4' no tiene que existir realmente pero debe tener un formato adecuado
+
+        const response = await fetchWithToken('events/65fc6249422350c575ebc9a4',{}, 'DELETE');
+        const body =  await response.json();
+
+        console.log(body);
+        expect(body.msg).toBe('Event not exist');
+        
 
      }) 
 
