@@ -1,6 +1,6 @@
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store'
-import { startLogin, startRegister } from '../../actions/auth';
+import { startChecking, startLogin, startRegister } from '../../actions/auth';
 import { types } from '../../types/types';
 import Swal from 'sweetalert2';
 import * as fetchModule from '../../helpers/fetch';
@@ -66,6 +66,7 @@ describe('Test in actions auth', () => {
 
       test('startRegister should be successfully', async() => {
 
+        //Mock de respuesta para la función fetchWithouthToken
         fetchModule.fetchWithoutToken = jest.fn(() =>({
             json(){
                 return {
@@ -89,4 +90,33 @@ describe('Test in actions auth', () => {
         expect(localStorage.setItem).toHaveBeenCalledWith('token',expect.any(String));
         expect(localStorage.setItem).toHaveBeenCalledWith('token-init-date',expect.any(Number));
       })
+
+      test('startChecking should be successfully', async() => { 
+
+        //Simulamos la respuesta de esta función porque no estamos probando un end point. 
+        //Solamente la ejecución de las acciones correctamente
+
+        fetchModule.fetchWithToken = jest.fn(() =>({
+            json(){
+                return {
+                    ok:true,
+                    uid:'1234',
+                    name:'some-user',
+                    token:'hsgsgafttuiwolqñ'
+                }
+            }
+        }))
+        await store.dispatch(startChecking());
+        const actions   = store.getActions();
+        //console.log(actions)
+        expect(actions[0]).toEqual({
+            type:types.authLogin,
+            payload:{
+                uid:'1234',
+                name:'some-user'
+            }
+        })
+        expect(localStorage.setItem).toHaveBeenCalledWith('token','hsgsgafttuiwolqñ')
+       })
  })
+
