@@ -38,7 +38,7 @@ Para probar correctamente la funcionalidad de esta aplicación primero debe aseg
 Desde el directorio raíz del proyecto ejecutar el comando  ```npm install``` para reconstruir las dependencias.
 
 ### 2 - Agregar variables de entorno
-Crear dos archivos ```.env.development``` y ```.env.production``` en la raíz del proyecto al mismo nivel que el archivo package.json.
+Crear dos archivos ```.env.development``` , ```.env.production```, ```.env.test``` en la raíz del proyecto al mismo nivel que el archivo package.json.
 
 Estos archivos deben contener lo siguiente:</br>
 ```.env.development```
@@ -52,6 +52,13 @@ Estos archivos deben contener lo siguiente:</br>
    #deberá poner la url del servicio donde esté desplegada Eg: https://heroku-calendar-example.com/api
    REACT_APP_API_URL = your_url_of_backend_deployment 
 ```
+
+```.env.test```
+```js script
+   REACT_APP_API_URL = http://localhost:4001/api
+
+```
+
 
 ### 3 Levantar aplicación
  

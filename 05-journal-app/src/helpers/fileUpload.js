@@ -14,7 +14,7 @@ export const fileUpload = async (file)=>{
     const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
 
     const formData = new  FormData();
-    // 'react-journal-app' nombre que el desarrolador de esta app le dió a la aplicación creada en cloudinary para almacenar las imágenes.
+    // 'react-journal-app' nombre que el desarrolador de esta app le dio a la aplicación creada en cloudinary para almacenar las imágenes.
     // Si le ha dado a su app en cloudinary un nombre diferente reemplazar en la constante
     const mCloudinaryAppName='react-journal-app';
     
