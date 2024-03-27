@@ -8,8 +8,8 @@ import Modal from 'react-modal'
 import DateTimePicker from 'react-datetime-picker';
 import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from 'react-redux';
-import { uiCloseModal } from '../actions/ui';
-import { eventClearActiveEvent, eventStartAddNew, eventStartUpdate } from '../actions/events';
+import { uiCloseModal } from '../../actions/ui';
+import { eventClearActiveEvent, eventStartAddNew, eventStartUpdate } from '../../actions/events';
 
 
 

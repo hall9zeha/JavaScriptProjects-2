@@ -8,11 +8,11 @@ import 'moment/locale/es'//Cambia los nombres de mes,día a español
 
 
 import 'react-big-calendar/lib/css/react-big-calendar.css' //Estilos para big calendar
-import { messages } from '../helpers/calendar-translate-es'
+import { messages } from '../../helpers/calendar-translate-es'
 import { CalendarEvent } from './CalendarEvent'
 import { CalendarModal } from './CalendarModal'
-import { uiOpenModal } from '../actions/ui'
-import { eventClearActiveEvent, eventSetActive, eventStartLoading } from '../actions/events'
+import { uiOpenModal } from '../../actions/ui'
+import { eventClearActiveEvent, eventSetActive, eventStartLoading } from '../../actions/events'
 import { AddNewFab } from '../ui/AddNewFab'
 import { DeleteEventFab } from '../ui/DeleteEventFab'
 

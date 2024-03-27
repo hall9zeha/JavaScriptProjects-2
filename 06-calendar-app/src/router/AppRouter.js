@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import {BrowserRouter , Navigate, Route, Router, Routes} from 'react-router-dom'
-import { LoginScreen } from '../auth/LoginScreen'
+import { LoginScreen } from '../components/auth/LoginScreen'
+import { CalendarScreen } from '../components/calendar/CalendarScreen'
 
-import { CalendarScreen } from '../calendar/CalendarScreen'
 import { useDispatch, useSelector } from 'react-redux'
 import { startChecking } from '../actions/auth'
 import { PublicRoute } from './PublicRoute'
