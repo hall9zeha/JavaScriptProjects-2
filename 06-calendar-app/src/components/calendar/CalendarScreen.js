@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {Calendar,momentLocalizer} from 'react-big-calendar'
 import { Navbar } from '../ui/Navbar'
-import moment from 'moment'
+import moment, { months } from 'moment'
 import { useDispatch, useSelector } from 'react-redux'
 
 import 'moment/locale/es'//Cambia los nombres de mes,día a español
@@ -19,11 +19,10 @@ import { DeleteEventFab } from '../ui/DeleteEventFab'
 
 
 moment.locale('es')//Cambia los nombres de mes,día a español
-
 const localizer = momentLocalizer(moment)
 
 export const CalendarScreen = () => {
-
+ 
     const {events, activeEvent} = useSelector(state=>state.calendar)
     const {uid} = useSelector(state=>state.auth)
     const dispatch = useDispatch()
@@ -67,7 +66,8 @@ export const CalendarScreen = () => {
             style
         }
     }
-  return (
+    
+return (
     <div className='calendar-screen'>
         <Navbar/>
         <Calendar
@@ -95,4 +95,5 @@ export const CalendarScreen = () => {
         <CalendarModal/>
     </div>
   )
+  
 }

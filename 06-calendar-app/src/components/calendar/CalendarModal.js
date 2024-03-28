@@ -36,6 +36,7 @@ const initEvent={
   notes:'',
   start:nowDate.toDate(),
   end:nowDatePlus.toDate()
+ 
 }
 export const CalendarModal = () => {
 
@@ -71,7 +72,7 @@ export const CalendarModal = () => {
 
   const closeModal = ()=>{
        dispatch(uiCloseModal());
-       dispatch(eventClearActiveEvent())
+       dispatch(eventClearActiveEvent());
        setFormValues(initEvent)
 
     }
@@ -92,8 +93,10 @@ export const CalendarModal = () => {
     }
     const handleSubmitForm = (e)=>{
       e.preventDefault()
+     
       const momentStart = moment(start)
       const momentEnd = moment(end)
+     
       //Validamos que la fecha inicial no sea igual o mayor que la fecha final
       if(momentStart.isSameOrAfter(momentEnd)){
         Swal.fire('Error','La fecha fin debe ser mayor que la fecha de inicio')  
@@ -106,7 +109,7 @@ export const CalendarModal = () => {
       if(activeEvent){
         dispatch(eventStartUpdate(formValues))
       }else{
-
+        
         dispatch(eventStartAddNew(formValues))
       }
       setTitleValid(true)
@@ -115,6 +118,7 @@ export const CalendarModal = () => {
 
   return (
     <Modal
+        testId='modal'
         isOpen={modalOpen}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
@@ -122,6 +126,7 @@ export const CalendarModal = () => {
         className='modal'
         overlayClassName='modal-fondo'
         closeTimeoutMS={200}
+        ariaHideApp={!process.env.NODE_ENV === 'test'}
         >
         <h1> {(activeEvent) ? 'Editar evento' : 'Nuevo evento'} </h1>
         <hr />

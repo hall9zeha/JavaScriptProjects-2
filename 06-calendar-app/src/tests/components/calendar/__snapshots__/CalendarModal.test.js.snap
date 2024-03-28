@@ -1,0 +1,603 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests in <CalendarModal/> component should show successfully 1`] = `
+<div
+  className="ReactModal__Overlay modal-fondo"
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  style={Object {}}
+>
+  <div
+    aria-modal={true}
+    className="ReactModal__Content modal"
+    data-testid="modal"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    role="dialog"
+    style={
+      Object {
+        "bottom": "auto",
+        "left": "50%",
+        "marginRight": "-50%",
+        "right": "auto",
+        "top": "50%",
+        "transform": "translate(-50%, -50%)",
+      }
+    }
+    tabIndex="-1"
+  >
+    <h1>
+       
+      Editar evento
+       
+    </h1>
+    <hr />
+    <form
+      className="container"
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group mb-2"
+      >
+        <label>
+          Fecha y hora inicio
+        </label>
+        <div
+          className="react-datetime-picker react-datetime-picker--closed react-datetime-picker--enabled form-control"
+          onFocus={[Function]}
+        >
+          <div
+            className="react-datetime-picker__wrapper"
+          >
+            <div
+              className="react-datetime-picker__inputGroup"
+              onClick={[Function]}
+            >
+              <input
+                hidden={true}
+                max="275760-09-12T19:00"
+                min="0001-01-01T00:00"
+                name="datetime"
+                onChange={[Function]}
+                onFocus={[Function]}
+                step={60}
+                style={
+                  Object {
+                    "position": "absolute",
+                    "visibility": "hidden",
+                    "zIndex": "-999",
+                  }
+                }
+                type="datetime-local"
+                value=""
+              />
+              <input
+                autoComplete="off"
+                className="react-datetime-picker__inputGroup__input react-datetime-picker__inputGroup__month"
+                data-input="true"
+                inputMode="numeric"
+                max={12}
+                min={1}
+                name="month"
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                placeholder="--"
+                required={false}
+                type="number"
+                value=""
+              />
+              <span
+                className="react-datetime-picker__inputGroup__divider"
+              >
+                /
+              </span>
+              <input
+                autoComplete="off"
+                autoFocus={false}
+                className="react-datetime-picker__inputGroup__input react-datetime-picker__inputGroup__day"
+                data-input="true"
+                inputMode="numeric"
+                max={31}
+                min={1}
+                name="day"
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                placeholder="--"
+                required={false}
+                type="number"
+                value=""
+              />
+              <span
+                className="react-datetime-picker__inputGroup__divider"
+              >
+                /
+              </span>
+              <input
+                autoComplete="off"
+                autoFocus={false}
+                className="react-datetime-picker__inputGroup__input react-datetime-picker__inputGroup__year"
+                data-input="true"
+                inputMode="numeric"
+                max={275760}
+                min={1}
+                name="year"
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                placeholder="----"
+                required={false}
+                step={1}
+                type="number"
+                value=""
+              />
+              <span
+                className="react-datetime-picker__inputGroup__divider"
+              >
+                 
+              </span>
+              <input
+                autoComplete="off"
+                autoFocus={false}
+                className="react-datetime-picker__inputGroup__input react-datetime-picker__inputGroup__hour"
+                data-input="true"
+                inputMode="numeric"
+                max={12}
+                min={1}
+                name="hour12"
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                placeholder="--"
+                required={false}
+                type="number"
+                value=""
+              />
+              <span
+                className="react-datetime-picker__inputGroup__divider"
+              >
+                :
+              </span>
+              <input
+                autoComplete="off"
+                autoFocus={false}
+                className="react-datetime-picker__inputGroup__input react-datetime-picker__inputGroup__minute"
+                data-input="true"
+                inputMode="numeric"
+                max={59}
+                min={0}
+                name="minute"
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                placeholder="--"
+                required={false}
+                type="number"
+                value=""
+              />
+              <span
+                className="react-datetime-picker__inputGroup__divider"
+              >
+                 
+              </span>
+              <select
+                autoFocus={false}
+                className="react-datetime-picker__inputGroup__input react-datetime-picker__inputGroup__amPm"
+                data-input="true"
+                data-select="true"
+                name="amPm"
+                onChange={[Function]}
+                onKeyDown={[Function]}
+                required={false}
+                value=""
+              >
+                <option
+                  value=""
+                >
+                  --
+                </option>
+                <option
+                  disabled={false}
+                  value="am"
+                >
+                  AM
+                </option>
+                <option
+                  disabled={false}
+                  value="pm"
+                >
+                  PM
+                </option>
+              </select>
+            </div>
+            <button
+              className="react-datetime-picker__clear-button react-datetime-picker__button"
+              onClick={[Function]}
+              onFocus={[Function]}
+              type="button"
+            >
+              <svg
+                className="react-datetime-picker__clear-button__icon react-datetime-picker__button__icon"
+                height={19}
+                stroke="black"
+                strokeWidth={2}
+                viewBox="0 0 19 19"
+                width={19}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="4"
+                  x2="15"
+                  y1="4"
+                  y2="15"
+                />
+                <line
+                  x1="15"
+                  x2="4"
+                  y1="4"
+                  y2="15"
+                />
+              </svg>
+            </button>
+            <button
+              className="react-datetime-picker__calendar-button react-datetime-picker__button"
+              onClick={[Function]}
+              onFocus={[Function]}
+              type="button"
+            >
+              <svg
+                className="react-datetime-picker__calendar-button__icon react-datetime-picker__button__icon"
+                height={19}
+                stroke="black"
+                strokeWidth={2}
+                viewBox="0 0 19 19"
+                width={19}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  fill="none"
+                  height="15"
+                  width="15"
+                  x="2"
+                  y="2"
+                />
+                <line
+                  x1="6"
+                  x2="6"
+                  y1="0"
+                  y2="4"
+                />
+                <line
+                  x1="13"
+                  x2="13"
+                  y1="0"
+                  y2="4"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="form-group mb-2"
+      >
+        <label>
+          Fecha y hora fin
+        </label>
+        <div
+          className="react-datetime-picker react-datetime-picker--closed react-datetime-picker--enabled form-control"
+          onFocus={[Function]}
+        >
+          <div
+            className="react-datetime-picker__wrapper"
+          >
+            <div
+              className="react-datetime-picker__inputGroup"
+              onClick={[Function]}
+            >
+              <input
+                hidden={true}
+                max="275760-09-12T19:00"
+                min="2024-03-28T18:00"
+                name="datetime"
+                onChange={[Function]}
+                onFocus={[Function]}
+                step={60}
+                style={
+                  Object {
+                    "position": "absolute",
+                    "visibility": "hidden",
+                    "zIndex": "-999",
+                  }
+                }
+                type="datetime-local"
+                value=""
+              />
+              <input
+                autoComplete="off"
+                className="react-datetime-picker__inputGroup__input react-datetime-picker__inputGroup__month"
+                data-input="true"
+                inputMode="numeric"
+                max={12}
+                min={1}
+                name="month"
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                placeholder="--"
+                required={false}
+                type="number"
+                value=""
+              />
+              <span
+                className="react-datetime-picker__inputGroup__divider"
+              >
+                /
+              </span>
+              <input
+                autoComplete="off"
+                autoFocus={false}
+                className="react-datetime-picker__inputGroup__input react-datetime-picker__inputGroup__day"
+                data-input="true"
+                inputMode="numeric"
+                max={31}
+                min={1}
+                name="day"
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                placeholder="--"
+                required={false}
+                type="number"
+                value=""
+              />
+              <span
+                className="react-datetime-picker__inputGroup__divider"
+              >
+                /
+              </span>
+              <input
+                autoComplete="off"
+                autoFocus={false}
+                className="react-datetime-picker__inputGroup__input react-datetime-picker__inputGroup__year"
+                data-input="true"
+                inputMode="numeric"
+                max={275760}
+                min={2024}
+                name="year"
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                placeholder="----"
+                required={false}
+                step={1}
+                type="number"
+                value=""
+              />
+              <span
+                className="react-datetime-picker__inputGroup__divider"
+              >
+                 
+              </span>
+              <input
+                autoComplete="off"
+                autoFocus={false}
+                className="react-datetime-picker__inputGroup__input react-datetime-picker__inputGroup__hour"
+                data-input="true"
+                inputMode="numeric"
+                max={12}
+                min={1}
+                name="hour12"
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                placeholder="--"
+                required={false}
+                type="number"
+                value=""
+              />
+              <span
+                className="react-datetime-picker__inputGroup__divider"
+              >
+                :
+              </span>
+              <input
+                autoComplete="off"
+                autoFocus={false}
+                className="react-datetime-picker__inputGroup__input react-datetime-picker__inputGroup__minute"
+                data-input="true"
+                inputMode="numeric"
+                max={59}
+                min={0}
+                name="minute"
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                placeholder="--"
+                required={false}
+                type="number"
+                value=""
+              />
+              <span
+                className="react-datetime-picker__inputGroup__divider"
+              >
+                 
+              </span>
+              <select
+                autoFocus={false}
+                className="react-datetime-picker__inputGroup__input react-datetime-picker__inputGroup__amPm"
+                data-input="true"
+                data-select="true"
+                name="amPm"
+                onChange={[Function]}
+                onKeyDown={[Function]}
+                required={false}
+                value=""
+              >
+                <option
+                  value=""
+                >
+                  --
+                </option>
+                <option
+                  disabled={false}
+                  value="am"
+                >
+                  AM
+                </option>
+                <option
+                  disabled={false}
+                  value="pm"
+                >
+                  PM
+                </option>
+              </select>
+            </div>
+            <button
+              className="react-datetime-picker__clear-button react-datetime-picker__button"
+              onClick={[Function]}
+              onFocus={[Function]}
+              type="button"
+            >
+              <svg
+                className="react-datetime-picker__clear-button__icon react-datetime-picker__button__icon"
+                height={19}
+                stroke="black"
+                strokeWidth={2}
+                viewBox="0 0 19 19"
+                width={19}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="4"
+                  x2="15"
+                  y1="4"
+                  y2="15"
+                />
+                <line
+                  x1="15"
+                  x2="4"
+                  y1="4"
+                  y2="15"
+                />
+              </svg>
+            </button>
+            <button
+              className="react-datetime-picker__calendar-button react-datetime-picker__button"
+              onClick={[Function]}
+              onFocus={[Function]}
+              type="button"
+            >
+              <svg
+                className="react-datetime-picker__calendar-button__icon react-datetime-picker__button__icon"
+                height={19}
+                stroke="black"
+                strokeWidth={2}
+                viewBox="0 0 19 19"
+                width={19}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  fill="none"
+                  height="15"
+                  width="15"
+                  x="2"
+                  y="2"
+                />
+                <line
+                  x1="6"
+                  x2="6"
+                  y1="0"
+                  y2="4"
+                />
+                <line
+                  x1="13"
+                  x2="13"
+                  y1="0"
+                  y2="4"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div
+        className="form-group mb-2"
+      >
+        <label>
+          Titulo y notas
+        </label>
+        <input
+          autoComplete="off"
+          className="form-control false"
+          name="title"
+          onChange={[Function]}
+          placeholder="Título del evento"
+          type="text"
+          value="test title"
+        />
+        <small
+          className="form-text text-muted"
+          id="emailHelp"
+        >
+          Una descripción corta
+        </small>
+      </div>
+      <div
+        className="form-group mb-2"
+      >
+        <textarea
+          className="form-control"
+          name="notes"
+          onChange={[Function]}
+          placeholder="Notas"
+          rows="5"
+          type="text"
+          value="test note"
+        />
+        <small
+          className="form-text text-muted"
+          id="emailHelp"
+        >
+          Información adicional
+        </small>
+      </div>
+      <button
+        className="btn btn-outline-primary btn-block"
+        type="submit"
+      >
+        <i
+          className="far fa-save"
+        />
+        <span>
+           Guardar
+        </span>
+      </button>
+    </form>
+  </div>
+</div>
+`;
