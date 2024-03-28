@@ -5,10 +5,16 @@ import renderer ,{act}from 'react-test-renderer';
 
 import configureStore from 'redux-mock-store'
 import { LoginScreen } from '../../../components/auth/LoginScreen';
-import { startLogin } from '../../../actions/auth';
+import { startLogin, startRegister } from '../../../actions/auth';
+import Swal from 'sweetalert2';
 
 jest.mock('../../../actions/auth',()=>({
-    startLogin:jest.fn()
+    startLogin:jest.fn(),
+    startRegister:jest.fn()
+}))
+
+jest.mock('sweetalert2',()=>({
+    fire:jest.fn()
 }))
 
 const thunk = require('redux-thunk').thunk;
@@ -29,6 +35,10 @@ const wrapper =  renderer.create(
 )
 
 describe('Test in <LoginScreen/> component', () => { 
+
+    beforeEach(()=>{
+        jest.clearAllMocks()
+    })
 
     test('should show successfully', () => { 
 
@@ -61,5 +71,60 @@ describe('Test in <LoginScreen/> component', () => {
         
         expect(startLogin).toHaveBeenCalledWith("martha@mail.com", "123456");
      })
+     test('Passwords for register should been equals', () => { 
 
+        act(()=>{
+
+           wrapper.root.findByProps({name:'rPassword'}).props.onChange({
+               target:{
+                   name:'rPassword',
+                   value:'123456'
+               }
+          });
+
+       })
+       act(()=>{
+
+           wrapper.root.findByProps({name:'rPassword2'}).props.onChange({
+            target:{
+                name:'rPassword2',
+                value:'1234567'
+            }
+           });
+
+       })
+
+        const form =  wrapper.root.findAllByType('form')
+        form[1].props.onSubmit({preventDefault:jest.fn()});
+        expect(startRegister).not.toHaveBeenCalled()
+        expect(Swal.fire).toHaveBeenCalledWith('Error','Passwords must be the same')
+
+      })
+      test('should dispatch register with equal passwords', () => { 
+        act(()=>{
+
+            wrapper.root.findByProps({name:'rPassword'}).props.onChange({
+                target:{
+                    name:'rPassword',
+                    value:'123456'
+                }
+           });
+ 
+        })
+        act(()=>{
+ 
+            wrapper.root.findByProps({name:'rPassword2'}).props.onChange({
+             target:{
+                 name:'rPassword2',
+                 value:'123456'
+             }
+            });
+ 
+        })
+ 
+         const form =  wrapper.root.findAllByType('form')
+         form[1].props.onSubmit({preventDefault:jest.fn()});
+         expect(startRegister).toHaveBeenCalledWith("", "", "123456")
+         expect(Swal.fire).not.toHaveBeenCalled()
+       })
  })
