@@ -1,6 +1,6 @@
 # JavaScriptProjects 2
 
-Un Conjunto de aplicaciones escritos en java script usando React, node js, firebase, mongo db, redux y  tests con React Test Library 
+Un Conjunto de aplicaciones escritas en Java Script usando React, node js, firebase, mongo db, redux y  tests con React Test Library 
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/hall9zeha/JavaScriptProjects-2/blob/main/README.md)
 

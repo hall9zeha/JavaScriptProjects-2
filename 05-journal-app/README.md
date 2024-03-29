@@ -1,6 +1,6 @@
 # Journal App
 
-Aplicación que registra eventos de diario con imágenes usando [firebase ](https://firebase.google.com/), autenticación con correo electrónico y cuentas de google y para el manejo de imágenes  [Cloudinary](https://cloudinary.com/), escrito en Java Script con React, redux y hooks.
+Aplicación que registra eventos de diario con imágenes usando [firebase ](https://firebase.google.com/), autenticación con correo electrónico y cuentas de google, para el manejo de imágenes  [Cloudinary](https://cloudinary.com/), escrito en Java Script con React, redux y hooks.
 
 
 ## Características:

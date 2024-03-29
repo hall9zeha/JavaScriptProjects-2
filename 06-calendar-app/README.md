@@ -38,7 +38,7 @@ Para probar correctamente la funcionalidad de esta aplicación primero debe aseg
 Desde el directorio raíz del proyecto ejecutar el comando  ```npm install``` para reconstruir las dependencias.
 
 ### 2 - Agregar variables de entorno
-Crear dos archivos ```.env.development``` , ```.env.production```, ```.env.test``` en la raíz del proyecto al mismo nivel que el archivo package.json.
+Crear los archivos ```.env.development``` , ```.env.production```, ```.env.test``` en la raíz del proyecto al mismo nivel que el archivo package.json.
 
 Estos archivos deben contener lo siguiente:</br>
 ```.env.development```
