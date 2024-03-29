@@ -19,7 +19,7 @@ A Set of applications written in java script using React, node js, firebase, mon
 
 ## Content
 * FirstApp
-* GifExpertApp -> Application that consumes the [Giphy](https://developers.giphy.com/) api
+* GifExpertApp -> Application that consumes the [Giphy](https://developers.giphy.com/) api.
 * HookApp -> Application that implements the most used hooks in React
 * HeroesApp -> Application implements public and private routes, navigation and hooks showing a list of fictional characters (Marvel, DC heroes)
 * JournalApp -> Application that implements a CRUD with Firebase and Redux

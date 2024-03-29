@@ -25,6 +25,7 @@ export const AddCategory = ({setCategories}) => {
     <form onSubmit={handleOnsubmit}>
      <input
         type='text'
+        placeHolder='Search'
         value={inputValue}
         onChange={handleInputChange}
     />
