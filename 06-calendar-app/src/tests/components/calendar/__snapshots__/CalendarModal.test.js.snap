@@ -311,7 +311,7 @@ exports[`Tests in <CalendarModal/> component should show successfully 1`] = `
               <input
                 hidden={true}
                 max="275760-09-12T19:00"
-                min="2024-03-28T18:00"
+                min="2024-03-29T11:00"
                 name="datetime"
                 onChange={[Function]}
                 onFocus={[Function]}

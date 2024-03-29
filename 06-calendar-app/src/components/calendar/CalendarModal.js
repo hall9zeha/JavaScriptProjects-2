@@ -137,6 +137,7 @@ export const CalendarModal = () => {
             <div className="form-group mb-2">
                 <label>Fecha y hora inicio</label>
                 <DateTimePicker
+                    testId="picker1"
                     onChange={handleStartDateChange}
                     value={activeEvent ? activeEvent.start : dateStart}
                     className='form-control'/>
@@ -145,6 +146,7 @@ export const CalendarModal = () => {
             <div className="form-group mb-2">
                 <label>Fecha y hora fin</label>
                 <DateTimePicker
+                    testId="picker2"
                     onChange={handleEndDateChange}
                     value={activeEvent ? activeEvent.end: dateEnd}
                     //La fecha inicial no debe ser mayor que dateEnd, lo validamos con minDate 
